@@ -103,6 +103,9 @@ public class ReportFolder
 	
 	private String patternSuffix = "";
 	
+	@Column(length=1024)
+	private String parsedContent = "";
+	
 	@ManyToOne
     @JoinColumn(name="categoryId", nullable=true)
 	private Category category;
@@ -703,7 +706,6 @@ public class ReportFolder
 	/**
 	 * <<Transient>> Conveniente para converter tags de volume em matriz.
 	 */
-//	@Transient
 	public String[] getVolumeTagsAsArray() {
 		return StringListUtils.stringToArray(getVolumeTags());
 	}
@@ -714,9 +716,18 @@ public class ReportFolder
 	/**
 	 * <<Transient>> Verdadeiro caso haja tags de volume.
 	 */
-//	@Transient
 	public boolean isVolumeTagEnabled() {
 		return getVolumeTags()!=null && getVolumeTags().length()>0;
+	}
+	
+	/**
+	 * Parsed content.
+	 */
+	public String getParsedContent() {
+		return parsedContent;
+	}
+	public void setParsedContent(String parsedContent) {
+		this.parsedContent = parsedContent;
 	}
 
     /**
