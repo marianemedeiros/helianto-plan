@@ -34,7 +34,7 @@ public interface ReportFolderExportedRepository extends
 	 * @return
 	 */	 
 	@Query("select new "
-			+ "org.helianto.home.internal.FolderReadAdapter"
+			+ "org.helianto.task.repository.FolderReadAdapter"
 			+ "(exported.reportFolder.id"
 			+ ", exported.reportFolder.category.id"
 			+ ", exported.reportFolder.folderCode"
@@ -53,7 +53,7 @@ public interface ReportFolderExportedRepository extends
 	 * @return
 	 */
 	@Query("select new "
-			+ "org.helianto.home.internal.FolderReadAdapter"
+			+ "org.helianto.task.repository.FolderReadAdapter"
 			+ "(exported.reportFolder.id, exported.reportFolder.category.id, exported.reportFolder.folderCode, exported.reportFolder.folderName, "
 			+ "exported.reportFolder.folderDecorationUrl, exported.reportFolder.patternPrefix, exported.reportFolder.patternSuffix, exported.reportFolder.numberOfDigits, exported.reportFolder.entity.id) "
 			+ "from ReportFolderExported exported "

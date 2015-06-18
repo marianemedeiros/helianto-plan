@@ -61,7 +61,7 @@ public interface ReportFolderRepository extends
 	 * @param entityId
 	 */
 	@Query("select new "
-			+ "org.helianto.home.internal.FolderReadAdapter"
+			+ "org.helianto.task.repository.FolderReadAdapter"
 			+ "(folder.id, folder.category.id, folder.folderCode, folder.folderName, "
 			+ "folder.folderDecorationUrl, folder.patternPrefix, folder.patternSuffix, folder.numberOfDigits, folder.entity.id) "
 			+ "from ReportFolder folder "
@@ -76,7 +76,7 @@ public interface ReportFolderRepository extends
 	 * @return
 	 */	 
 	@Query("select new "
-			+ "org.helianto.home.internal.FolderReadAdapter"
+			+ "org.helianto.task.repository.FolderReadAdapter"
 			+ "(folder.id, folder.category.id, folder.folderCode, folder.folderName, "
 			+ "folder.folderDecorationUrl, folder.patternPrefix, folder.patternSuffix, folder.numberOfDigits, folder.entity.id) "
 			+ "from ReportFolder folder "
@@ -90,7 +90,7 @@ public interface ReportFolderRepository extends
 	 * @return
 	 */
 	@Query("select new "
-			+ "org.helianto.home.internal.FolderReadAdapter"
+			+ "org.helianto.task.repository.FolderReadAdapter"
 			+ "(folder.id, folder.category.id, folder.folderCode, folder.folderName, "
 			+ "folder.folderDecorationUrl, folder.patternPrefix, folder.patternSuffix, folder.numberOfDigits, folder.entity.id) "
 			+ "from ReportFolder folder "
@@ -102,7 +102,7 @@ public interface ReportFolderRepository extends
 	 * @return
 	 */
 	@Query("select new "
-			+ "org.helianto.home.internal.FolderReadAdapter"
+			+ "org.helianto.task.repository.FolderReadAdapter"
 			+ "(folder.id, folder.category.id, folder.folderCode, folder.folderName, "
 			+ "folder.folderDecorationUrl, folder.patternPrefix, folder.patternSuffix, folder.numberOfDigits, folder.entity.id) "
 			+ "from ReportFolder folder "
