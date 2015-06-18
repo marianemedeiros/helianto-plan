@@ -30,7 +30,6 @@ import javax.persistence.UniqueConstraint;
 import org.helianto.core.domain.Entity;
 import org.helianto.core.domain.Identity;
 import org.helianto.core.number.Sequenceable;
-import org.helianto.task.Review;
 import org.helianto.task.def.FollowUpAction;
 import org.helianto.task.def.NotificationOption;
 import org.helianto.task.def.ReviewDecision;
@@ -55,8 +54,7 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 public class FollowUp 
 	extends AbstractFollowUp 
 	implements 
-	  Sequenceable 
-	, Review<Report> {
+	  Sequenceable {
 	
 	/**
 	 * Expõe o discriminador.
@@ -283,18 +281,6 @@ public class FollowUp
 		int result = 17;
 		result = 37 * result + (int) this.getInternalNumber();
 		return result;
-	}
-
-	@Override
-	public void update() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void update(Date nextCheckDate) {
-		// TODO Auto-generated method stub
-		
 	}
 
 }

@@ -41,7 +41,6 @@ import javax.persistence.Table;
 import javax.persistence.Transient;
 import javax.persistence.UniqueConstraint;
 
-import org.helianto.core.StateResolver;
 import org.helianto.core.def.Resolution;
 import org.helianto.core.def.Uploadable;
 import org.helianto.core.domain.Category;
@@ -52,9 +51,6 @@ import org.helianto.core.number.Sequenceable;
 import org.helianto.core.utils.StringListUtils;
 import org.helianto.document.internal.AbstractPlan;
 import org.helianto.partner.domain.Partner;
-import org.helianto.task.ControlSource;
-import org.helianto.task.Reportable;
-import org.helianto.task.Workable;
 import org.helianto.task.def.ActionType;
 import org.helianto.task.def.FollowUpOrder;
 import org.helianto.task.def.RequestType;
@@ -85,12 +81,9 @@ public class Report
 	extends AbstractPlan 
 	implements 
 	  Sequenceable
-	, Reportable
 	, Uploadable
-	, Workable
 	, InterpretableCategory
 	, Comparator<FollowUp>
-	, ControlSource
 	, WorkflowTarget 
 {
 
@@ -176,10 +169,6 @@ public class Report
     private Category category;
     
     private int workflowPhase = 0;
-    
-    @ManyToOne
-    @JoinColumn(name="mainRequirementId")
-    private DocumentRequirement mainRequirement;
     
     private int mainRequirementSequence = -1;
     
@@ -1367,16 +1356,6 @@ public class Report
     }
     
     /**
-     * Refere-se ao principal documento de uma lista de documentos associados.
-     */
-    public DocumentRequirement getMainRequirement() {
-		return mainRequirement;
-	}
-    public void setMainRequirement(DocumentRequirement mainRequirement) {
-		this.mainRequirement = mainRequirement;
-	}
-    
-    /**
      * Conveniente para associar o principal documento a partir da lista.
      * 
      * @param mainRequirementList
@@ -1542,12 +1521,6 @@ public class Report
 		}
 		
 		return true;
-	}
-
-	@Override
-	public StateResolver getState() {
-		// TODO Auto-generated method stub
-		return null;
 	}
 
 }
