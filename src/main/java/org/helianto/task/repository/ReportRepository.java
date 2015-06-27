@@ -4,14 +4,13 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
-import org.helianto.core.data.FilterRepository;
 import org.helianto.core.domain.Entity;
+import org.helianto.task.domain.Report;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
-
-import org.helianto.task.domain.Report;
 
 /**
  * Report repository.
@@ -19,7 +18,7 @@ import org.helianto.task.domain.Report;
  * @author mauriciofernandesdecastro
  */
 public interface ReportRepository 
-	extends	FilterRepository<Report, Serializable> {
+	extends	JpaRepository<Report, Serializable> {
 
 	/**
 	 * Find by natural key.

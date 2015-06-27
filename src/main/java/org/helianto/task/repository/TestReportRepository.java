@@ -2,10 +2,9 @@ package org.helianto.task.repository;
 
 import java.io.Serializable;
 
-import org.helianto.core.data.FilterRepository;
-
 import org.helianto.task.domain.TestGroup;
 import org.helianto.task.domain.TestReport;
+import org.springframework.data.jpa.repository.JpaRepository;
 
 /**
  * Test report repository.
@@ -13,7 +12,7 @@ import org.helianto.task.domain.TestReport;
  * @author mauriciofernandesdecastro
  */
 public interface TestReportRepository 
-	extends FilterRepository<TestReport, Serializable> {
+	extends JpaRepository<TestReport, Serializable> {
 	
 	/**
 	 * Find by natural key.

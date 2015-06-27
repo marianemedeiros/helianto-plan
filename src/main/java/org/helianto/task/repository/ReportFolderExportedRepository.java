@@ -3,13 +3,13 @@ package org.helianto.task.repository;
 import java.io.Serializable;
 import java.util.List;
 
-import org.helianto.core.data.FilterRepository;
 import org.helianto.core.domain.Entity;
 import org.helianto.core.repository.EntityReadAdapter;
 import org.helianto.task.domain.ReportFolder;
 import org.helianto.task.domain.ReportFolderExported;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
 /**
@@ -17,8 +17,9 @@ import org.springframework.data.jpa.repository.Query;
  * 
  * @author Eldevan Nery Junior
  */
-public interface ReportFolderExportedRepository extends
-		FilterRepository<ReportFolderExported, Serializable> {
+public interface ReportFolderExportedRepository 
+	extends JpaRepository<ReportFolderExported, Serializable> 
+{
 	
 
 	
