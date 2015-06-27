@@ -3,6 +3,7 @@ package org.helianto.task.repository;
 import java.io.Serializable;
 import java.util.Date;
 
+import org.helianto.core.internal.AbstractItemAdapter;
 import org.helianto.task.domain.Report;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
