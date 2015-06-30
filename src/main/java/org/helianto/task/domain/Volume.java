@@ -32,7 +32,7 @@ public class Volume
 	 */
 	public Volume() {
 		super();
-		setResolution('A');
+		setResolution("A");
 	}
 	
 	/**

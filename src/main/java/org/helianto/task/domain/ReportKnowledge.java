@@ -16,7 +16,7 @@ import org.helianto.document.domain.Document;
 import org.helianto.user.domain.User;
 
 /**
- * Controle de nível de conhecimento por relatórios.
+ * Report knowledge level.
  * 
  * @author Mauricio Fernandes de Castro
  */
@@ -88,9 +88,6 @@ public class ReportKnowledge
 		return null;
 	}
 	
-    /**
-     * Chave primária.
-     */
     public int getId() {
         return this.id;
     }
@@ -98,9 +95,6 @@ public class ReportKnowledge
         this.id = id;
     }
     
-    /**
-     * Versão.
-     */
     public Integer getVersion() {
         return this.version;
     }
@@ -109,7 +103,7 @@ public class ReportKnowledge
     }
     
 	/**
-     * Solicitaçãoo de usuário.
+     * User requirement.
      */
 	public UserRequirement getUserRequirement() {
 		return userRequirement;
@@ -119,7 +113,7 @@ public class ReportKnowledge
 	}
 	
 	/**
-	 * <<Transient>> Conveniente para recuperar o usuário.
+	 * <<Transient>> helper method to retrieve user.
 	 */
 	@Transient
 	public User getUser() {
@@ -130,7 +124,7 @@ public class ReportKnowledge
 	}
 	
 	/**
-	 * <<Transient>> Conveniente para recuperar o relatório.
+	 * <<Transient>> helper method to retrieve report.
 	 */
 	@Transient
 	public Report getReport() {
@@ -141,7 +135,7 @@ public class ReportKnowledge
 	}
 	
 	/**
-	 * Nível de conhecimento.
+	 * Knowledge level.
 	 */
 	public char getKnowledgeLevel() {
 		return knowledgeLevel;

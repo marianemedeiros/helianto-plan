@@ -9,7 +9,6 @@ import org.junit.Test;
 /**
  * 
  * @author mauriciofernandesdecastro
- *
  */
 public class FolderReadAdapterTests {
 
