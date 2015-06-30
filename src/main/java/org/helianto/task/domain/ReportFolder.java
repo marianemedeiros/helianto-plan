@@ -135,8 +135,6 @@ public class ReportFolder
 	@Column(length=255)
     private String traceabilityItems = "";
 	
-	private char archive = ' ';
-	
 	@DateTimeFormat(style="SS")
     @Temporal(TemporalType.TIMESTAMP)
 	private Date startDate;
@@ -572,17 +570,6 @@ public class ReportFolder
      */
     public void addScriptContent(String scriptContent) {
     	getScriptList().add(scriptContent);
-	}
-    
-    /**
-     * Archive type.
-     * @deprecated
-     */
-    public char getArchive() {
-		return archive;
-	}
-    public void setArchive(char archive) {
-		this.archive = archive;
 	}
     
     /**
