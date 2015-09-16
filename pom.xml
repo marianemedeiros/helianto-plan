@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.helianto</groupId>
 	<artifactId>helianto-plan</artifactId>
-	<version>0.4.4-SNAPSHOT</version>
+	<version>0.5.0-SNAPSHOT</version>
 	<name>helianto-plan</name>
 		
 	<description>plan tools</description>
@@ -35,7 +35,7 @@
 	</licenses>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<helianto.version>0.4.4-SNAPSHOT</helianto.version>
+		<helianto.version>0.5.0-SNAPSHOT</helianto.version>
 	</properties>
 
 	<dependencies>
