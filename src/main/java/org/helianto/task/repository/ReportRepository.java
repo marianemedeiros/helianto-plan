@@ -200,7 +200,7 @@ public interface ReportRepository
 	 * @param folderId
 	 * @param reportCode
 	 */
-	List<Report> findByCategoryIdAndSeriesIdAndReportCodeLike(int categoryId, int folderId, String reportCode);
+	List<Report> findByCategory_IdAndSeriesIdAndReportCodeLike(int categoryId, int folderId, String reportCode);
 	
 	/**
 	 * Find by folder and report code like.

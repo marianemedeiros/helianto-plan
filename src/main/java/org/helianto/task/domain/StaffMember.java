@@ -26,6 +26,7 @@ import org.helianto.task.def.ReportStaffGrade;
 import org.helianto.task.internal.AbstractParticipant;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 
 /**
@@ -43,7 +44,7 @@ public class StaffMember
 	
     private static final long serialVersionUID = 1L;
   
-    @JsonBackReference 
+	@JsonIgnore
     @ManyToOne
     @JoinColumn(name="reportFolderId", nullable=true)
     private ReportFolder reportFolder;

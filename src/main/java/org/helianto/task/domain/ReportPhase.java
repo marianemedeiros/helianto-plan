@@ -60,7 +60,7 @@ public class ReportPhase
     @Id @GeneratedValue(strategy=GenerationType.AUTO)
     private int id;
     
-    @JsonBackReference 
+	@JsonIgnore
     @ManyToOne
     @JoinColumn(name="reportFolderId", nullable=true)
     private ReportFolder reportFolder;

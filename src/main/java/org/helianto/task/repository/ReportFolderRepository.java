@@ -47,7 +47,7 @@ public interface ReportFolderRepository
 	 * 
 	 * @param categoryId
 	 */
-	List<ReportFolder> findByCategoryId(int categoryId);
+	List<ReportFolder> findByCategory_Id(int categoryId);
 	
 	/**
 	 * Find by natural key.
@@ -82,7 +82,7 @@ public interface ReportFolderRepository
 			+ "folder.folderDecorationUrl, folder.patternPrefix, folder.patternSuffix, folder.numberOfDigits, folder.entity.id) "
 			+ "from ReportFolder folder "
 			+ "where (folder.entity.id = ?1 OR folder.id in (select e.reportFolder.id from ReportFolderExported  e where e.exportedEntity.id = ?1)) and folder.category.id = ?2 ")
-	Page<FolderReadAdapter> findByEntity_IdAndCategoryId(int entityId, int categoryId, Pageable page);
+	Page<FolderReadAdapter> findByEntity_IdAndCategory_Id(int entityId, int categoryId, Pageable page);
 
 	/**
 	 * Find By folderCode
@@ -113,7 +113,7 @@ public interface ReportFolderRepository
 	@Query("select folder.id "
 			+ "from ReportFolder folder "
 			+ "where folder.category.id = ?1 AND lower(folder.folderCode) like ?2")
-	List<Integer> findIdsByCategoryIdAndFolderCodeLike(int categoryId, String folderCode);
+	List<Integer> findIdsByCategory_IdAndFolderCodeLike(int categoryId, String folderCode);
 	
 }
 

@@ -63,7 +63,7 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 
 /**
- * Pastas para relatórios.
+ * Report folder, a.k.a. Project.
  * 
  * @author Mauricio Fernandes de Castro
  */
@@ -94,9 +94,20 @@ public class ReportFolder
 	@Column(length=32)
     private String encoding = "iso8859_1";
 	
+	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name="ownerId")
 	private Identity owner;
+	
+	@Transient
+	private Integer ownerId;
+	
+	public Integer getOwnerId() {
+		return ownerId;
+	}
+	public void setOwnerId(Integer ownerId) {
+		this.ownerId = ownerId;
+	}
 	
 	@Column(length=20)
 	private String reportNumberPattern = "";
@@ -106,22 +117,55 @@ public class ReportFolder
 	@Column(length=1024)
 	private String parsedContent = "";
 	
+	@JsonIgnore
 	@ManyToOne
     @JoinColumn(name="categoryId", nullable=true)
 	private Category category;
+	
+	@Transient
+	private Integer categoryId;
+	
+	public Integer getCategoryId() {
+		return categoryId;
+	}
+	public void setCategoryId(Integer categoryId) {
+		this.categoryId = categoryId;
+	}
 	
 	private char privacyLevel = PrivacyLevel.PUBLIC.getValue();
 	
 	@Column(length=20)
 	private String zIndex = "";
 	
+	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name="partnerId")
 	private Partner partner;
 	
+	@Transient
+	private Integer partnerId;
+	
+	public Integer getPartnerId() {
+		return partnerId;
+	}
+	public void setPartnerId(Integer partnerId) {
+		this.partnerId = partnerId;
+	}
+	
+	@JsonIgnore
 	@ManyToOne
     @JoinColumn(name="userGroupId", nullable=true)
     private UserGroup userGroup;
+	
+	@Transient
+	private Integer userGroupId;
+	
+	public Integer getUserGroupId() {
+		return userGroupId;
+	}
+	public void setUserGroupId(Integer userGroupId) {
+		this.userGroupId = userGroupId;
+	}
 	
 	@Column(length=32)
 	private String folderCaption = "";
@@ -148,11 +192,11 @@ public class ReportFolder
 	
 	private boolean categoryOverrideAllowed = false;
 	
-	@JsonManagedReference 
+	@JsonIgnore
 	@OneToMany(mappedBy="reportFolder")
 	private Set<StaffMember> staff = new HashSet<StaffMember>(0);
     
-	@JsonManagedReference 
+	@JsonIgnore
 	@OneToMany(mappedBy="reportFolder", fetch=FetchType.EAGER)
 	private Set<ReportPhase> phases = new HashSet<ReportPhase>(0);
 	
@@ -162,7 +206,7 @@ public class ReportFolder
     /** 
      * Required constructor.
      */
-    ReportFolder() {
+    public ReportFolder() {
     	this(null, "");
     }
 
@@ -198,7 +242,6 @@ public class ReportFolder
     	setContentType(contentType);
     }
     
-    
     /** 
      * Category constructor.
      * 
@@ -211,20 +254,88 @@ public class ReportFolder
     }
     
     /**
-     * Restringe aos tipos vélidos para pastas de relatórios.
+     * Form constructor.
+     * 
+     * @param id
+     * @param entityId
+     * @param folderCode
+     * @param content
+     * @param encoding
+     * @param ownerId
+     * @param reportNumberPattern
+     * @param patternSuffix
+     * @param parsedContent
+     * @param categoryId
+     * @param privacyLevel
+     * @param zIndex
+     * @param partnerId
+     * @param userGroupId
+     * @param folderCaption
+     * @param parentPath
+     * @param nature
+     * @param traceabilityItems
+     * @param startDate
+     * @param endDate
+     * @param volumeTags
+     * @param categoryOverrideAllowed
+     */
+    public ReportFolder(int id
+    		, int entityId
+    		, String folderCode
+    		, byte[] content
+    		, String encoding
+    		, int ownerId
+    		, String reportNumberPattern
+    		, String patternSuffix
+    		, String parsedContent
+    		, int categoryId
+    		, char privacyLevel
+    		, String zIndex
+    		, int partnerId
+    		, int userGroupId
+    		, String folderCaption
+    		, String parentPath
+    		, String nature
+    		, String traceabilityItems
+    		, Date startDate
+    		, Date endDate
+    		, String volumeTags
+    		, boolean categoryOverrideAllowed
+    		) {
+		this();
+		setId(id);
+		setEntityId(entityId);
+		setFolderCode(folderCode);
+		setContent(content);
+		setEncoding(encoding);
+		setOwnerId(ownerId);
+		setReportNumberPattern(reportNumberPattern);
+		setPatternSuffix(patternSuffix);
+		setParsedContent(parsedContent);
+		setCategoryId(categoryId);
+		setPrivacyLevel(privacyLevel);
+		setZIndex(zIndex);
+		setPartnerId(partnerId);
+		setUserGroupId(userGroupId);
+		setFolderCaption(folderCaption);
+		setParentPath(parentPath);
+		setNature(nature);
+		setTraceabilityItems(traceabilityItems);
+		setStartDate(startDate);
+		setEndDate(endDate);
+		setVolumeTags(volumeTags);
+		setCategoryOverrideAllowed(categoryOverrideAllowed);
+	}
+    
+	/**
+     * Content type as enum.
      */
     public void setContentTypeAsEnum(ReportFolderContentType contentType) {
     	super.setContentType(contentType.getValue());
     }
     
-    /*
-     * O código da pasta seré gerado automaticamente a partir de um prefixo e uma 
-     * squencia numérica gerada a partir da interface Sequenceable
-     */
-    
     /**
-     * Somente responde com um numero não nulo caso o código da pasta ainda não tenha sido
-     * estabelecido.
+     * Internal number
      */
     public long getInternalNumber() {
     	if (getFolderCode()!=null && getFolderCode().length()>0) {
@@ -263,7 +374,6 @@ public class ReportFolder
      * 
      * @param reportNumberPattern
      */
-//    @Transient
     protected String internalReportNumberPattern(String reportNumberPattern) {
     	if (isCategoryEnabled() 
     			&& getCategory().getCustomNumberPattern()!=null 
@@ -291,7 +401,6 @@ public class ReportFolder
     /**
      * Helper method to get text content as String.
      */
-//    @Transient
     public String getContentAsString() {
     	if (getContent()!=null && isText()) {
     		return new String(getContent());
@@ -302,7 +411,7 @@ public class ReportFolder
 		setContent(contentAsString);
 	}
     
-//    @Transient
+
     public int getContentSize() {
     	return this.content.length;
     }
@@ -317,17 +426,16 @@ public class ReportFolder
 	/**
 	 * Conteúdo da pasta sempre seré html.
 	 */
-//	@Transient
 	public String getMultipartFileContentType() {
 		return "text/html";
 	}
 	
-//    @Transient
+
     public boolean isText() {
     	return true;
     }
 
-//    @Transient
+
     public boolean isHtml() {
     	return true;
     }
@@ -342,7 +450,6 @@ public class ReportFolder
     /**
      * Owner principal.
      */
-//    @Transient
     public String getOwnerPrincipal() {
 		if (getOwner()!=null) {
 			return getOwner().getPrincipal();
@@ -353,7 +460,6 @@ public class ReportFolder
     /**
      * Owner display name.
      */
-//    @Transient
     public String getOwnerDisplayName() {
 		if (getOwner()!=null) {
 			return getOwner().getDisplayName();
@@ -365,7 +471,6 @@ public class ReportFolder
      * Owner optional alias.
      * @deprecated
      */
-//    @Transient
     public String getOwnerOptionalAlias() {
 		if (getOwner()!=null) {
 			return getOwner().getDisplayName();
@@ -376,7 +481,6 @@ public class ReportFolder
     /**
      * Owner name.
      */
-//    @Transient
     public String getOwnerName() {
 		if (getOwner()!=null) {
 			return getOwner().getIdentityName();
@@ -397,7 +501,6 @@ public class ReportFolder
 	/**
 	 * <<Transient>> Verdadeiro se hé uma categoria.
 	 */
-//	@Transient
 	public boolean isCategoryEnabled() {
 		return getCategory()!=null;
 	}
@@ -485,7 +588,6 @@ public class ReportFolder
     /**
      * <<Transient>> Lista de naturezas como String[].
      */
-//	@Transient
 	public String[] getNatureAsArray() {
 		return StringListUtils.stringToArray(getNature());
 	}
@@ -503,15 +605,13 @@ public class ReportFolder
 		this.parentPath = parentPath;
 	}
     
-//    @Transient
+
     public String getCurrentPath() {
     	if (getParentPath()!=null) {
     		return new StringBuilder(getParentPath()).append(getFolderCode()).append("/").toString();
     	}
     	return "/";
     }
-
-
 
     /**
      * Lista de itens requeridos para rastreabilidade, como lista CSV de pares KV.
@@ -531,7 +631,6 @@ public class ReportFolder
      * <<Transient>> Lista de Scripts como String[].
      */
     @JsonIgnore
-//    @Transient
     public Map<String, String> getTraceabilityItemsAsMap() {
 		return parse(traceabilityItems);
 	}
@@ -539,7 +638,6 @@ public class ReportFolder
     /**
      * Lista de scripts, como lista CSV de códigos dos scripts.
      */
-//    @Transient
     public String getScriptItems() {
     	if (isCategoryEnabled()) {
     		return getCategory().getScriptItems();
@@ -550,7 +648,6 @@ public class ReportFolder
     /**
      * <<Transient>> Lista de itens requeridos para rastreabilidade, como lista CSV de pares KV.
      */
-//    @Transient
     public String[] getScriptItemsAsArray() {
 		return StringListUtils.stringToArray(getScriptItems());
 	}
@@ -558,7 +655,6 @@ public class ReportFolder
     /**
      * <<Transient>> Lista de com o conteúdo dos scripts (carregados durante a execução).
      */
-//    @Transient
     public List<String> getScriptList() {
     	return transientScriptContents;
     }
@@ -595,7 +691,6 @@ public class ReportFolder
     /**
      * <<Transient>> Padréo de referéncia para seleção de parceiros como lista uma CSV de pares KV convertido em matriz.
      */
-//    @Transient
     public static String[] getStandardPartnerTypeFilterPatternAsArray() {
     	// CLiente, fornecedor,filial,representante,laboratério,fabricante,produtor,transportadora,ensino
 		return "C,S,D,A,L,M,R,T,E".split(",");
@@ -604,7 +699,6 @@ public class ReportFolder
     /**
      * <<Transient>> Verdadeiro se hé um padréo para seleção de parceiros determinado pela categoria.
      */
-//    @Transient
     public boolean isPartnerRequired() {
     	return isCategoryEnabled() && getCategory().getPartnerFilterPatternAsArray().length >0;
     }
@@ -612,7 +706,6 @@ public class ReportFolder
     /**
      * <<Transient>> Lista de padrées para seleção de categorias convertida para uma matriz.
      */
-//    @Transient
     public String[] getPartnerFilterPatternAsArray() {
     	if (isPartnerRequired()) {
     		return getCategory().getPartnerFilterPatternAsArray();
@@ -643,7 +736,6 @@ public class ReportFolder
     /**
      * Total da estimativa das fases.
      */
-//    @Transient
     public int getEstimate() {
     	int estimate = 0;
     	for (ReportPhase phase: getPhases()) {
@@ -655,7 +747,6 @@ public class ReportFolder
     /**
      * <<Transient>> Lista de responsabilidades convertida em matriz.
      */
-//    @Transient
     public String[] getCustomWorkflowRolesAsArray() {
     	if (isCategoryEnabled()) {
     		return getCategory().getCustomWorkflowRolesAsArray();
@@ -671,7 +762,6 @@ public class ReportFolder
      * As chaves do mapa tem base 1, i.e., a primeira responsabilidade é marcada como 1.
      * </p>
      */
-//    @Transient
     public Map<String, String> getCustomWorkflowRolesAsMap() {
 		Map<String, String> workflowRolesMap = new HashMap<String, String>();
     	if (isCategoryEnabled()) {
@@ -718,8 +808,8 @@ public class ReportFolder
 	}
 
     /**
-    * equals
-    */
+     * equals
+     */
    @Override
    public boolean equals(Object other) {
          if ( !(other instanceof ReportFolder) ) return false;
@@ -729,7 +819,6 @@ public class ReportFolder
    /**
     * <<Transient>> Map parser.
     */
-//   @Transient
 	protected LinkedHashMap<String, String> parse(String parsedContent) {
 		LinkedHashMap<String, String> parsedMap = new LinkedHashMap<String, String>();
 		if (parsedContent == null) {
