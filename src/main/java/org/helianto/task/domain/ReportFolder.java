@@ -28,7 +28,6 @@ import javax.persistence.Column;
 import javax.persistence.DiscriminatorColumn;
 import javax.persistence.DiscriminatorType;
 import javax.persistence.DiscriminatorValue;
-import javax.persistence.FetchType;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
@@ -42,7 +41,6 @@ import javax.persistence.Transient;
 import javax.persistence.UniqueConstraint;
 
 import org.helianto.core.Navigable;
-import org.helianto.core.Privacy;
 import org.helianto.core.Programmable;
 import org.helianto.core.def.HumanReadable;
 import org.helianto.core.def.PrivacyLevel;
@@ -55,12 +53,8 @@ import org.helianto.partner.domain.Partner;
 import org.helianto.task.def.ReportFolderContentType;
 import org.helianto.user.domain.User;
 import org.helianto.user.domain.UserGroup;
-import org.springframework.format.annotation.DateTimeFormat;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-
-
 
 /**
  * Report folder, a.k.a. Project.
@@ -79,9 +73,7 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 @DiscriminatorValue("F")
 public class ReportFolder 
 	extends AbstractSerializer<Report> 
-	implements 
-	  Privacy
-	, HumanReadable
+	implements HumanReadable
 	, Programmable
 	, Navigable
 {
@@ -102,13 +94,6 @@ public class ReportFolder
 	@Transient
 	private Integer ownerId;
 	
-	public Integer getOwnerId() {
-		return ownerId;
-	}
-	public void setOwnerId(Integer ownerId) {
-		this.ownerId = ownerId;
-	}
-	
 	@Column(length=20)
 	private String reportNumberPattern = "";
 	
@@ -125,14 +110,7 @@ public class ReportFolder
 	@Transient
 	private Integer categoryId;
 	
-	public Integer getCategoryId() {
-		return categoryId;
-	}
-	public void setCategoryId(Integer categoryId) {
-		this.categoryId = categoryId;
-	}
-	
-	private char privacyLevel = PrivacyLevel.PUBLIC.getValue();
+	private Character privacyLevel = new Character(PrivacyLevel.PUBLIC.getValue());
 	
 	@Column(length=20)
 	private String zIndex = "";
@@ -145,13 +123,6 @@ public class ReportFolder
 	@Transient
 	private Integer partnerId;
 	
-	public Integer getPartnerId() {
-		return partnerId;
-	}
-	public void setPartnerId(Integer partnerId) {
-		this.partnerId = partnerId;
-	}
-	
 	@JsonIgnore
 	@ManyToOne
     @JoinColumn(name="userGroupId", nullable=true)
@@ -159,13 +130,6 @@ public class ReportFolder
 	
 	@Transient
 	private Integer userGroupId;
-	
-	public Integer getUserGroupId() {
-		return userGroupId;
-	}
-	public void setUserGroupId(Integer userGroupId) {
-		this.userGroupId = userGroupId;
-	}
 	
 	@Column(length=32)
 	private String folderCaption = "";
@@ -179,25 +143,23 @@ public class ReportFolder
 	@Column(length=255)
     private String traceabilityItems = "";
 	
-	@DateTimeFormat(style="SS")
     @Temporal(TemporalType.TIMESTAMP)
 	private Date startDate;
 	
-	@DateTimeFormat(style="SS")
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date endDate;
 	
 	@Column(length=128)
 	private String volumeTags = "";
 	
-	private boolean categoryOverrideAllowed = false;
+	private Boolean categoryOverrideAllowed = false;
 	
 	@JsonIgnore
 	@OneToMany(mappedBy="reportFolder")
 	private Set<StaffMember> staff = new HashSet<StaffMember>(0);
     
 	@JsonIgnore
-	@OneToMany(mappedBy="reportFolder", fetch=FetchType.EAGER)
+	@OneToMany(mappedBy="reportFolder")
 	private Set<ReportPhase> phases = new HashSet<ReportPhase>(0);
 	
 	@Transient
@@ -279,20 +241,20 @@ public class ReportFolder
      * @param volumeTags
      * @param categoryOverrideAllowed
      */
-    public ReportFolder(int id
-    		, int entityId
+    public ReportFolder(Integer id
+    		, Integer entityId
     		, String folderCode
     		, byte[] content
     		, String encoding
-    		, int ownerId
+    		, Integer ownerId
     		, String reportNumberPattern
     		, String patternSuffix
     		, String parsedContent
-    		, int categoryId
-    		, char privacyLevel
+    		, Integer categoryId
+    		, Character privacyLevel
     		, String zIndex
-    		, int partnerId
-    		, int userGroupId
+    		, Integer partnerId
+    		, Integer userGroupId
     		, String folderCaption
     		, String parentPath
     		, String nature
@@ -300,23 +262,23 @@ public class ReportFolder
     		, Date startDate
     		, Date endDate
     		, String volumeTags
-    		, boolean categoryOverrideAllowed
+    		, Boolean categoryOverrideAllowed
     		) {
 		this();
 		setId(id);
-		setEntityId(entityId);
+		setEntityId(entityId!=null ? entityId:0);
 		setFolderCode(folderCode);
 		setContent(content);
 		setEncoding(encoding);
-		setOwnerId(ownerId);
+		setOwnerId(ownerId!=null ? ownerId:0);
 		setReportNumberPattern(reportNumberPattern);
 		setPatternSuffix(patternSuffix);
 		setParsedContent(parsedContent);
-		setCategoryId(categoryId);
-		setPrivacyLevel(privacyLevel);
+		setCategoryId(categoryId!=null ? categoryId:0);
+		setPrivacyLevel(privacyLevel!=null ? privacyLevel:'0');
 		setZIndex(zIndex);
-		setPartnerId(partnerId);
-		setUserGroupId(userGroupId);
+		setPartnerId(partnerId!=null ? partnerId:0);
+		setUserGroupId(userGroupId!=null ? userGroupId:0);
 		setFolderCaption(folderCaption);
 		setParentPath(parentPath);
 		setNature(nature);
@@ -324,7 +286,7 @@ public class ReportFolder
 		setStartDate(startDate);
 		setEndDate(endDate);
 		setVolumeTags(volumeTags);
-		setCategoryOverrideAllowed(categoryOverrideAllowed);
+		setCategoryOverrideAllowed(categoryOverrideAllowed!=null ? categoryOverrideAllowed:false);
 	}
     
 	/**
@@ -393,10 +355,6 @@ public class ReportFolder
     public void setContent(byte[] content) {
         this.content = content;
     }
-    @JsonIgnore
-    public void setContent(String content) {
-    	this.content = content.getBytes();
-    }
     
     /**
      * Helper method to get text content as String.
@@ -408,12 +366,19 @@ public class ReportFolder
     	return "";
     }
     public void setContentAsString(String contentAsString) {
-		setContent(contentAsString);
+    	if (contentAsString!=null) {
+        	this.content = contentAsString.getBytes();
+    	}
 	}
     
-
+    /**
+     * Content size.
+     */
     public int getContentSize() {
-    	return this.content.length;
+    	if (content!=null) {
+        	return this.content.length;
+    	}
+    	return 0;
     }
     
 	public String getEncoding() {
@@ -435,11 +400,13 @@ public class ReportFolder
     	return true;
     }
 
-
     public boolean isHtml() {
     	return true;
     }
 
+    /**
+     * Owner.
+     */
     public Identity getOwner() {
 		return owner;
 	}
@@ -447,6 +414,16 @@ public class ReportFolder
 		this.owner = owner;
 	}
     
+    /**
+     * <<Transient>> owner id.
+     */
+	public Integer getOwnerId() {
+		return ownerId;
+	}
+	public void setOwnerId(Integer ownerId) {
+		this.ownerId = ownerId;
+	}
+	
     /**
      * Owner principal.
      */
@@ -499,6 +476,16 @@ public class ReportFolder
 	}
 	
 	/**
+	 * <<Transient>> category id.
+	 */
+	public Integer getCategoryId() {
+		return categoryId;
+	}
+	public void setCategoryId(Integer categoryId) {
+		this.categoryId = categoryId;
+	}
+	
+	/**
 	 * <<Transient>> Verdadeiro se hé uma categoria.
 	 */
 	public boolean isCategoryEnabled() {
@@ -515,10 +502,10 @@ public class ReportFolder
 		this.categoryOverrideAllowed = categoryOverrideAllowed;
 	}
 	
-    public char getPrivacyLevel() {
+    public Character getPrivacyLevel() {
 		return privacyLevel;
 	}
-    public void setPrivacyLevel(char privacyLevel) {
+    public void setPrivacyLevel(Character privacyLevel) {
 		this.privacyLevel = privacyLevel;
 	}
     public void setPrivacyLevelAsEnum(PrivacyLevel privacyLevel) {
@@ -555,6 +542,13 @@ public class ReportFolder
 		this.partner = partner;
 	}
     
+	public Integer getPartnerId() {
+		return partnerId;
+	}
+	public void setPartnerId(Integer partnerId) {
+		this.partnerId = partnerId;
+	}
+	
     /**
      * User group.
      */
@@ -566,7 +560,17 @@ public class ReportFolder
 	}
     
     /**
-     * Nome dado é pasta.
+     * <<Transient>> partner id.
+     */
+	public Integer getUserGroupId() {
+		return userGroupId;
+	}
+	public void setUserGroupId(Integer userGroupId) {
+		this.userGroupId = userGroupId;
+	}
+	
+    /**
+     * Folder caption.
      */
     public String getFolderCaption() {
 		return folderCaption;
@@ -738,8 +742,10 @@ public class ReportFolder
      */
     public int getEstimate() {
     	int estimate = 0;
-    	for (ReportPhase phase: getPhases()) {
-    		estimate = phase.getEstimate();
+    	if (getPhases()!=null) {
+        	for (ReportPhase phase: getPhases()) {
+        		estimate = phase.getEstimate();
+        	}
     	}
     	return estimate;
     }
