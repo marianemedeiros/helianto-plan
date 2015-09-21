@@ -15,9 +15,12 @@
 
 package org.helianto.task.domain;
 
+import java.util.Date;
+
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 import javax.persistence.UniqueConstraint;
 
 import org.helianto.core.domain.Identity;
@@ -25,7 +28,6 @@ import org.helianto.task.def.ReportStaffAssignment;
 import org.helianto.task.def.ReportStaffGrade;
 import org.helianto.task.internal.AbstractParticipant;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 
@@ -48,6 +50,24 @@ public class StaffMember
     @ManyToOne
     @JoinColumn(name="reportFolderId", nullable=true)
     private ReportFolder reportFolder;
+    
+	@Transient
+    private Integer reportFolderId;
+    
+	@Transient
+    private String reportFolderCode;
+    
+	@Transient
+    private String reportFolderName;
+    
+	@Transient
+    private Integer partnerId;
+    
+	@Transient
+    private Date startDate;
+    
+	@Transient
+    private Date endDate;
     
     private char memberGrade = ReportStaffGrade.STARTER.getValue();
     
@@ -81,8 +101,40 @@ public class StaffMember
     	this(report);
     	setIdentity(identity);
     }
-
+    
     /**
+     * Form constructor.
+     * 
+     * @param id
+     * @param reportFolderId
+     * @param folderCode
+     * @param folderName
+     * @param identityId
+     * @param partnerId
+     * @param startDate
+     * @param endDate
+     */
+    public StaffMember(int id
+    		, int reportFolderId
+    		, String folderCode
+    		, String folderName
+    		, int identityId
+    		, Integer partnerId
+    		, Date startDate
+    		, Date endDate
+    		) {
+		super();
+		setId(id);
+		setReportFolderId(reportFolderId);
+		setReportFolderCode(folderCode);
+		setReportFolderName(folderName);
+		setIdentityId(identityId);
+		setPartnerId(partnerId!=null ? partnerId: 0);
+		setStartDate(startDate);
+		setEndDate(endDate);
+	}
+
+	/**
      * Pasta à qual os membros pertencem.
      */
     public ReportFolder getReportFolder() {
@@ -91,6 +143,66 @@ public class StaffMember
     public void setReportFolder(ReportFolder reportFolder) {
         this.reportFolder = reportFolder;
     }
+    
+    /**
+     * <<Transient>> report folder id.
+     */
+    public Integer getReportFolderId() {
+		return reportFolderId;
+	}
+    public void setReportFolderId(Integer reportFolderId) {
+		this.reportFolderId = reportFolderId;
+	}
+    
+    /**
+     * <<Transient>> report folder code.
+     */
+    public String getReportFolderCode() {
+		return reportFolderCode;
+	}
+    public void setReportFolderCode(String reportFolderCode) {
+		this.reportFolderCode = reportFolderCode;
+	}
+    
+    /**
+     * <<Transient>> report folder name.
+     */
+    public String getReportFolderName() {
+		return reportFolderName;
+	}
+    public void setReportFolderName(String reportFolderName) {
+		this.reportFolderName = reportFolderName;
+	}
+    
+    /**
+     * <<Transient>> report folder partner id.
+     */
+    public Integer getPartnerId() {
+		return partnerId;
+	}
+    public void setPartnerId(Integer partnerId) {
+		this.partnerId = partnerId;
+	}
+    
+    /**
+     * <<Transient>> report folder start date.
+     */
+    public Date getStartDate() {
+		return startDate;
+	}
+    public void setStartDate(Date startDate) {
+		this.startDate = startDate;
+	}
+    
+    /**
+     * <<Transient>> report folder end date.
+     */
+    public Date getEndDate() {
+		return endDate;
+	}
+    public void setEndDate(Date endDate) {
+		this.endDate = endDate;
+	}
     
     /**
      * Grau de conhecimento com o qual participante contribui para o projeto.
@@ -140,5 +252,11 @@ public class StaffMember
          result = 37 * result + ( getIdentity() == null ? 0 : this.getIdentity().hashCode() );
          return result;
    }
+
+	@Override
+	public String toString() {
+		return "StaffMember [reportFolderId=" + reportFolderId + ", partnerId=" + partnerId + ", memberGrade=" + memberGrade
+				+ ", memberGroup=" + memberGroup + ", getIdentityId()=" + getIdentityId() + "]";
+	}
 
 }

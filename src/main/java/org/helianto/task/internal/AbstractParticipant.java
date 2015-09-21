@@ -26,11 +26,14 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 import javax.persistence.Version;
 
 import org.helianto.core.domain.Identity;
 import org.helianto.task.def.Assignment;
 import org.springframework.format.annotation.DateTimeFormat;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 /**
  * Um participante.
@@ -51,9 +54,13 @@ public class AbstractParticipant
     @Version
     private int version;
     
+    @JsonIgnore
     @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @JoinColumn(name="identityId", nullable=true)
     private Identity identity;
+    
+    @Transient
+    private Integer identityId;
     
     private char assignmentType;
     
@@ -100,9 +107,18 @@ public class AbstractParticipant
     }
     
     /**
+     * <<Transient>> identity id.
+     */
+    public Integer getIdentityId() {
+		return identityId;
+	}
+    public void setIdentityId(Integer identityId) {
+		this.identityId = identityId;
+	}
+    
+    /**
      * <<Transient>> Permite que as subclasses modifiquem a forma pela qual a identidade é obtida.
      */
-//    @Transient
     protected Identity getInternalIdentity() {
     	return this.identity;
     }
@@ -110,7 +126,6 @@ public class AbstractParticipant
     /**
      * Conveniente para recuperar o apelido do participante.
      */
-//    @Transient
     public String getParticipantAlias() {
     	if (getIdentity()!=null) {
     		return getIdentity().getDisplayName();
@@ -121,7 +136,6 @@ public class AbstractParticipant
     /**
      * Conveniente para recuperar o nome do participante.
      */
-//    @Transient
     public String getParticipantName() {
     	if (getIdentity()!=null) {
     		return getIdentity().getIdentityName();
@@ -132,7 +146,6 @@ public class AbstractParticipant
     /**
      * Conveniente para recuperar a foto do participante.
      */
-//    @Transient
     public byte[] getParticipantPhoto() {
     	if (getIdentity()!=null) {
     		return getIdentity().getPhoto();
@@ -157,7 +170,6 @@ public class AbstractParticipant
     /**
      * <<Transient>> Permite que as subclasses modifiquem a forma pela qual o tipo de atribuição é obtido.
      */
-//    @Transient
     protected char getInternalAssignmentType() {
     	return this.assignmentType;
     }
@@ -175,7 +187,6 @@ public class AbstractParticipant
     /**
      * <<Transient>> Permite que as subclasses modifiquem a forma pela qual a data de atribuição é obtida.
      */
-//    @Transient
     protected Date getInternalJoinDate() {
     	return this.joinDate;
     }
@@ -193,7 +204,6 @@ public class AbstractParticipant
     /**
      * <<Transient>> Permite que as subclasses modifiquem a forma pela qual o nível de workflow é obtido.
      */
-//    @Transient
     protected int getInternalWorkflowLevel() {
     	return this.workflowLevel;
     }
@@ -201,7 +211,6 @@ public class AbstractParticipant
     /**
      * <<Transient>> Determina se um indivéduo participa do workflow.
      */
-//    @Transient
     public boolean isWithinWorkflow() {
     	return getWorkflowLevel() >0;
     }
