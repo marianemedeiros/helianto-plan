@@ -1,4 +1,4 @@
-package org.helianto.task.domain;
+package org.helianto.task.def;
 
 /**
  * Allows for pattern generation.

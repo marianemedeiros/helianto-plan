@@ -28,6 +28,8 @@ import javax.persistence.Column;
 import javax.persistence.DiscriminatorColumn;
 import javax.persistence.DiscriminatorType;
 import javax.persistence.DiscriminatorValue;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
@@ -51,6 +53,7 @@ import org.helianto.core.utils.StringListUtils;
 import org.helianto.document.internal.AbstractSerializer;
 import org.helianto.partner.domain.Partner;
 import org.helianto.task.def.ReportFolderContentType;
+import org.helianto.task.def.Resolution2;
 import org.helianto.user.domain.User;
 import org.helianto.user.domain.UserGroup;
 
@@ -140,6 +143,10 @@ public class ReportFolder
 	@Column(length=12)
     private String nature = "";
 	
+	@Column(length=6)
+	@Enumerated(EnumType.STRING)
+	private Resolution2 resolution;
+	
 	@Column(length=255)
     private String traceabilityItems = "";
 	
@@ -180,6 +187,7 @@ public class ReportFolder
      */
     public ReportFolder(Entity entity, String folderCode) {
     	super(entity, folderCode);
+    	setResolution(Resolution2.TODO);
     	setContentTypeAsEnum(ReportFolderContentType.PORTFOLIO);
     }
     
@@ -590,6 +598,16 @@ public class ReportFolder
 	}
     
     /**
+     * Resolução.
+     */
+    public Resolution2 getResolution() {
+		return resolution;
+	}
+    public void setResolution(Resolution2 resolution) {
+		this.resolution = resolution;
+	}
+    
+    /**
      * <<Transient>> Lista de naturezas como String[].
      */
 	public String[] getNatureAsArray() {
@@ -736,19 +754,6 @@ public class ReportFolder
     public void setPhases(Set<ReportPhase> phases) {
 		this.phases = phases;
 	}
-    
-    /**
-     * Total da estimativa das fases.
-     */
-    public int getEstimate() {
-    	int estimate = 0;
-    	if (getPhases()!=null) {
-        	for (ReportPhase phase: getPhases()) {
-        		estimate = phase.getEstimate();
-        	}
-    	}
-    	return estimate;
-    }
     
     /**
      * <<Transient>> Lista de responsabilidades convertida em matriz.
