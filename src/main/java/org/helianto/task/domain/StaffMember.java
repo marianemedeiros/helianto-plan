@@ -17,6 +17,9 @@ package org.helianto.task.domain;
 
 import java.util.Date;
 
+import javax.persistence.Column;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
@@ -26,13 +29,14 @@ import javax.persistence.UniqueConstraint;
 import org.helianto.core.domain.Identity;
 import org.helianto.task.def.ReportStaffAssignment;
 import org.helianto.task.def.ReportStaffGrade;
+import org.helianto.task.def.ReportStaffRole;
 import org.helianto.task.internal.AbstractParticipant;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 
 /**
- * Membros de uma equipe.
+ * Team (or staff) assigned to a project.
  * 
  * @author Mauricio Fernandes de Castro
  */
@@ -69,9 +73,23 @@ public class StaffMember
 	@Transient
     private Date endDate;
     
+	/**
+	 * @deprecated
+	 */
     private char memberGrade = ReportStaffGrade.STARTER.getValue();
     
+    @Column(length=12)
+    @Enumerated(EnumType.STRING)
+    private ReportStaffGrade staffGrade = ReportStaffGrade.STARTER;
+    
+	/**
+	 * @deprecated
+	 */
     private char memberGroup = ReportStaffAssignment.VIEWER.getValue();
+    
+    @Column(length=12)
+    @Enumerated(EnumType.STRING)
+    private ReportStaffRole staffRole = ReportStaffRole.TEAM;    
 
     /** 
      * Default constructor.
@@ -134,8 +152,58 @@ public class StaffMember
 		setEndDate(endDate);
 	}
 
+    /**
+     * Form constructor.
+     * 
+     * @param id
+     * @param reportFolderId
+     * @param identityId
+     * @param identityDisplayName
+     * @param identityFirstName
+     * @param identityLastName
+     * @param identityImageUrl
+     * @param identityGender
+     * @param partnerId
+     * @param startDate
+     * @param endDate
+     * @param joinDate
+     * @param staffGrade
+     * @param staffRole
+     */
+    public StaffMember(int id
+    		, int reportFolderId
+    		, int identityId
+    		, String identityDisplayName
+    		, String identityFirstName
+    		, String identityLastName
+    		, String identityImageUrl
+    		, Character identityGender
+    		, Integer partnerId
+    		, Date startDate
+    		, Date endDate
+    		, Date joinDate
+    		, ReportStaffGrade staffGrade
+    		, ReportStaffRole staffRole
+    		) {
+		super();
+		setId(id);
+		setReportFolderId(reportFolderId);
+		setIdentityId(identityId);
+		setIdentityDisplayName(identityDisplayName);
+		setIdentityFirstName(identityFirstName);
+		setIdentityLastName(identityLastName);
+		setIdentityImageUrl(identityImageUrl);
+		setIdentityGender(identityGender!=null ? identityGender:'N');
+		setPartnerId(partnerId!=null ? partnerId: 0);
+		setStartDate(startDate);
+		setEndDate(endDate);
+		setJoinDate(joinDate);
+		setStaffGrade(staffGrade);
+		setStaffRole(staffRole);
+	}
+
 	/**
-     * Pasta à qual os membros pertencem.
+     * Report folder (or project).
      */
     public ReportFolder getReportFolder() {
         return this.reportFolder;
@@ -205,7 +273,7 @@ public class StaffMember
 	}
     
     /**
-     * Grau de conhecimento com o qual participante contribui para o projeto.
+     * @deprecated
      */
     public char getMemberGrade() {
 		return memberGrade;
@@ -213,12 +281,19 @@ public class StaffMember
     public void setMemberGrade(char memberGrade) {
 		this.memberGrade = memberGrade;
 	}
-    public void setMemberGradeAsEnum(ReportStaffGrade reportStaffGrade) {
-		this.memberGrade = reportStaffGrade.getValue();
+    
+    /**
+     * Assignee level of knowledge at the time of assignment.
+     */
+    public ReportStaffGrade getStaffGrade() {
+		return staffGrade;
+	}
+    public void setStaffGrade(ReportStaffGrade staffGrade) {
+		this.staffGrade = staffGrade;
 	}
     
     /**
-     * Literal usado na atribuição da equipe.
+     * @deprecated
      */
     public char getMemberGroup() {
 		return memberGroup;
@@ -226,8 +301,15 @@ public class StaffMember
     public void setMemberGroup(char memberGroup) {
 		this.memberGroup = memberGroup;
 	}
-    public void setMemberGroupAsEnum(ReportStaffAssignment reportStaffAssignment) {
-		this.memberGrade = reportStaffAssignment.getValue();
+    
+    /**
+     * Assignee role.
+     */
+    public ReportStaffRole getStaffRole() {
+		return staffRole;
+	}
+    public void setStaffRole(ReportStaffRole staffRole) {
+		this.staffRole = staffRole;
 	}
 
    /**
@@ -257,6 +339,24 @@ public class StaffMember
 	public String toString() {
 		return "StaffMember [reportFolderId=" + reportFolderId + ", partnerId=" + partnerId + ", memberGrade=" + memberGrade
 				+ ", memberGroup=" + memberGroup + ", getIdentityId()=" + getIdentityId() + "]";
+	}
+	
+	/**
+	 * Merger.
+	 * 
+	 * @param command
+	 */
+	public StaffMember merge(StaffMember command) {
+		command = (StaffMember) super.merge(command);
+		command.setReportFolderId(reportFolderId);
+		command.setReportFolderCode(reportFolderCode);
+		command.setReportFolderName(reportFolderName);
+		command.setPartnerId(partnerId);
+		command.setStartDate(startDate);
+		command.setEndDate(endDate);
+		command.setStaffGrade(staffGrade);
+		command.setStaffRole(staffRole);
+		return command;
 	}
 
 }

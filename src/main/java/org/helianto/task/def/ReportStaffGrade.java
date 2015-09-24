@@ -1,7 +1,7 @@
 package org.helianto.task.def;
 
 /**
- * Grau de conhecimento na equipe.
+ * Staff level of knowledge.
  * 
  * @author mauriciofernandesdecastro
  */

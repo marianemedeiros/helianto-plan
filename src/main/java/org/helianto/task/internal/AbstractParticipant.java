@@ -36,7 +36,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 /**
- * Um participante.
+ * Team base class.
  * 
  * @author Mauricio Fernandes de Castro
  */
@@ -62,7 +62,25 @@ public class AbstractParticipant
     @Transient
     private Integer identityId;
     
-    private char assignmentType;
+    @Transient
+    private String identityFirstName;
+    
+    @Transient
+    private String identityLastName;
+    
+    @Transient
+    private String identityDisplayName;
+    
+    @Transient
+    private String identityImageUrl;
+    
+    @Transient
+    private char identityGender;
+    
+    /**
+     * @deprecated
+     */
+    private char assignmentType = Assignment.PARTICIPANT.getValue();
     
     @DateTimeFormat(style="S-")
     @Temporal(TemporalType.TIMESTAMP)
@@ -71,15 +89,14 @@ public class AbstractParticipant
     private int workflowLevel;
 
     /** 
-     * Construtor vazio. 
+     * Empty constructor. 
      */
     public AbstractParticipant() {
-    	setAssignmentTypeAsEnum(Assignment.PARTICIPANT);
     	setJoinDate(new Date());
     }
 
     /** 
-     * Chave primária. 
+     * Primary key. 
      */
     public int getId() {
         return this.id;
@@ -88,7 +105,9 @@ public class AbstractParticipant
         this.id = id;
     }
     
-   
+    /**
+     * Consistency check.
+     */
     public int getVersion() {
 		return version;
 	}
@@ -97,7 +116,7 @@ public class AbstractParticipant
 	}
 
     /**
-     * Identidade do participante.
+     * Identity.
      */
     public Identity getIdentity() {
         return getInternalIdentity();
@@ -142,20 +161,48 @@ public class AbstractParticipant
     	}
     	return "?";
     }
-
-    /**
-     * Conveniente para recuperar a foto do participante.
-     */
-    public byte[] getParticipantPhoto() {
-    	if (getIdentity()!=null) {
-    		return getIdentity().getPhoto();
-    	}
-    	return new byte[0];
+    
+    public String getIdentityFirstName() {
+		return identityFirstName;
+	}
+    public void setIdentityFirstName(String identityFirstName) {
+		this.identityFirstName = identityFirstName;
+	}
+    
+    public String getIdentityLastName() {
+		return identityLastName;
+	}
+    public void setIdentityLastName(String identityLastName) {
+		this.identityLastName = identityLastName;
+	}
+    
+    public String getIdentityName() {
+    	return identityFirstName + " " + identityLastName;
     }
+    
+    public String getIdentityDisplayName() {
+		return identityDisplayName;
+	}
+    public void setIdentityDisplayName(String identityDisplayName) {
+		this.identityDisplayName = identityDisplayName;
+	}
 
+    public String getIdentityImageUrl() {
+		return identityImageUrl;
+	}
+    public void setIdentityImageUrl(String identityImageUrl) {
+		this.identityImageUrl = identityImageUrl;
+	}
+    
+    public char getIdentityGender() {
+		return identityGender;
+	}
+    public void setIdentityGender(char identityGender) {
+		this.identityGender = identityGender;
+	}
+    
     /**
-     * Tipo da atribuição.
-     * @see Assignment
+     * @deprecated
      */
     public char getAssignmentType() {
         return getInternalAssignmentType();
@@ -175,7 +222,7 @@ public class AbstractParticipant
     }
     
     /**
-     * Data em que a atribuição foi reconhecida pelo participante.
+     * Join date.
      */
     public Date getJoinDate() {
         return getInternalJoinDate();
@@ -238,5 +285,24 @@ public class AbstractParticipant
       
         return buffer.toString();
     }
+    
+    /**
+     * Merger.
+     * 
+     * @param command
+     */
+	public AbstractParticipant merge(AbstractParticipant command) {
+		command.setId(id);
+		command.setIdentityId(identityId);
+		command.setIdentityFirstName(identityFirstName);
+		command.setIdentityLastName(identityLastName);
+		command.setIdentityDisplayName(identityDisplayName);
+		command.setIdentityImageUrl(identityImageUrl);
+		command.setIdentityGender(identityGender);
+		command.setAssignmentType(assignmentType);
+		command.setJoinDate(joinDate);
+		command.setWorkflowLevel(workflowLevel);
+		return command;
+	}
 
 }

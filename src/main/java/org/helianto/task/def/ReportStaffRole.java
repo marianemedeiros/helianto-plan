@@ -1,37 +1,36 @@
 package org.helianto.task.def;
 
 /**
- * Assignment.
+ * Staff role.
  * 
  * @author mauriciofernandesdecastro
- * @deprecated
  */
-public enum ReportStaffAssignment {
+public enum ReportStaffRole {
 	
     /**
-     * Proprietário (ou Product Owner).
+     * Business leader (or product owner).
      */
     OWNER('0'),
     /**
-     * Líder (ou Scrum Master).
+     * Technical leader (or Scrum Master).
      */
     LEADER('1'),
     /**
-     * Membro da equip (Pig).
+     * Staff member (Pig).
      */
     TEAM('2'),
     /**
-     * Participante (Chicken).
+     * Observer (Chicken).
      */
-    PARTICIPANT('3'),
+    OBSERVER('3'),
     /**
-     * Outros, cientes.
+     * Other.
      */
-    VIEWER('4');
+    OTHER('4');
     
     private char value;
     
-    private ReportStaffAssignment(char value) {
+    private ReportStaffRole(char value) {
         this.value = value;
     }
     public char getValue() {
