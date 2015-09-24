@@ -291,18 +291,10 @@ public class AbstractParticipant
      * 
      * @param command
      */
-	public AbstractParticipant merge(AbstractParticipant command) {
-		command.setId(id);
-		command.setIdentityId(identityId);
-		command.setIdentityFirstName(identityFirstName);
-		command.setIdentityLastName(identityLastName);
-		command.setIdentityDisplayName(identityDisplayName);
-		command.setIdentityImageUrl(identityImageUrl);
-		command.setIdentityGender(identityGender);
-		command.setAssignmentType(assignmentType);
-		command.setJoinDate(joinDate);
-		command.setWorkflowLevel(workflowLevel);
-		return command;
+	protected void merge(AbstractParticipant command) {
+		setAssignmentType(command.getAssignmentType());
+		setJoinDate(command.getJoinDate());
+		setWorkflowLevel(command.getWorkflowLevel());
 	}
 
 }

@@ -347,16 +347,12 @@ public class StaffMember
 	 * @param command
 	 */
 	public StaffMember merge(StaffMember command) {
-		command = (StaffMember) super.merge(command);
-		command.setReportFolderId(reportFolderId);
-		command.setReportFolderCode(reportFolderCode);
-		command.setReportFolderName(reportFolderName);
-		command.setPartnerId(partnerId);
-		command.setStartDate(startDate);
-		command.setEndDate(endDate);
-		command.setStaffGrade(staffGrade);
-		command.setStaffRole(staffRole);
-		return command;
+		super.merge(command);
+		setStartDate(command.getStartDate());
+		setEndDate(command.getEndDate());
+		setStaffGrade(command.getStaffGrade());
+		setStaffRole(command.getStaffRole());
+		return this;
 	}
 
 }
