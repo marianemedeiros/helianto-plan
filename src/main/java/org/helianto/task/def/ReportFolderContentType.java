@@ -1,22 +1,22 @@
 package org.helianto.task.def;
 
 /**
- * Define tipos de pastas de relatórios.
+ * Define report folders type.
  * 
  * @author mauriciofernandesdecastro
  */
 public enum ReportFolderContentType {
 	
 	/**
-	 * Pastas mostradas no menu 'Portfolio'
+	 * Folders show in menu 'Portfolio' 
 	 */
 	PORTFOLIO('P'),
 	/**
-	 * Pastas mostradas no menu 'Campanha'
+	 * Folders show in menu 'Campaign'
 	 */
 	CAMPAIGN('C'),
 	/**
-	 * Pastas mostradas no menu 'Processo de produção'
+	 * Folders show in menu 'Production process'
 	 */
 	PROCESS('R');
 	

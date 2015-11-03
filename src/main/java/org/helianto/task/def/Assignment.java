@@ -16,30 +16,30 @@
 package org.helianto.task.def;
 
 /**
- * Define como a equipe se relaciona com a tarefa.
+ * Define how team relates with the task.
  * 
  * @author Mauricio Fernandes de Castro
  */
 public enum Assignment {
     
     /**
-     * Proprietário (ou Product Owner).
+     * Product Owner.
      */
     OWNER('0'),
     /**
-     * Líder (ou Scrum Master).
+     * Leader (or Scrum Master).
      */
     LEADER('1'),
     /**
-     * Membro da equip (Pig).
+     * Staff member (Pig).
      */
     TEAM('2'),
     /**
-     * Participante (Chicken).
+     * Participant (Chicken).
      */
     PARTICIPANT('3'),
     /**
-     * Outros, cientes.
+     * Other, clients.
      */
     VIEWER('4');
     

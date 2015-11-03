@@ -16,17 +16,17 @@
 package org.helianto.task.def;
 
 /**
- * Identifica as opções de notificação
+ * Identify notification options.
  * 
  * @author Mauricio Fernandes de Castro
  */
 public enum NotificationOption {
 	
-	/** Todos os participantes */
+	/** All attendees */
 	ALL('A'),
-	/** Somente o relator, se houver */
+	/** Just reporter.*/
 	REPORTER('R'),
-	/** Nenhum dos participantes */
+	/** None attendees */
 	NONE('N');
 	
 	private NotificationOption(char value) {

@@ -1,7 +1,7 @@
 package org.helianto.task.def;
 
 /**
- * Tipos de artigo.
+ * Articles types.
  * 
  * @author mauriciofernandesdecastro
  */
@@ -20,7 +20,7 @@ public enum ArticleType {
 	private char value;
 	
 	/**
-	 * Valor do tipo de artigo.
+	 * Value of type of article.
 	 */
 	public char getValue() {
 		return value;

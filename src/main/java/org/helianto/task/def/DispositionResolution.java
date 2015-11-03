@@ -17,23 +17,23 @@
 package org.helianto.task.def;
 
 /**
- * Definie resoluções para disposições.
+ * Sets resolutions to provisions.
  * 
  * @author Mauricio Fernandes de Castro
  */
 public enum DispositionResolution {
 	
-	/** Néo iniciada */
+	/** Not started. */
 	IDLE('I'),
-	/** Em anélise */
+	/** In process */
 	TODO('T'),
 	/** Usar */
 	USE('1'),
-	/** Retrabalho */
+	/** Rework */
 	REWORK('2'),
-	/** Rejeição */
+	/** Rejection */
 	SCRAP('3'),
-	/** Improcedente */
+	/** Unfounded */
 	UNFOUNDED('U');
 	
 	private DispositionResolution(char value) {

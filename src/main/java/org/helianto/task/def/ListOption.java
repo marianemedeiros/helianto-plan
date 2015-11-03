@@ -23,27 +23,27 @@ package org.helianto.task.def;
 public enum ListOption {
 
 	/**
-	 * Apenas tarefas
+	 * Taks.
 	 */
     TASK('T'),
     /**
-     * Relatórios, projetos e tarefas
+     * Reports, projects and tasks.
      */
     PLAIN('P'),
     /**
-     * Ocorréncias
+     * Action
      */
     ACTION('A'),
     /**
-     * Auditorias
+     * Audit
      */
     AUDIT('U'),
     /**
-     * Turmas
+     * Course
      */
     COURSE('S'),
     /**
-     * Todos
+     * All
      */
     ALL(' ');
     

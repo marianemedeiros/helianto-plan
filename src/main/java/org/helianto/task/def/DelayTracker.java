@@ -16,42 +16,42 @@
 package org.helianto.task.def;
 
 /**
- * Define valores assumidos pelo rastreador de atraso.
+ * Sets defaults values by the delay tracker.
  * 
  * @author Mauricio Fernandes de Castro
  */
 public enum DelayTracker {
     
     /**
-     * Em dia.
+     * Updated.
      */
     ON_SCHEDULE('O', false),
     /**
-     * Atrasado.
+     * Late.
      */
     LATE('L', true),
     /**
-     * Muito atrasado.
+     * Very late.
      */
     TOO_LATE('T', true),
     /**
-     * Néo iniciado
+     * Not started.
      */
     NOT_STARTED('N', false),
     /**
-     * Vencido
+     * Overdue.
      */
     PAST_DUE_DATE('P', true),
     /**
-     * Pronto para começar
+     * ready to start.
      */
     READY_TO_START('R', false),
     /**
-     * Atrasado para o inécio
+     * Late to the beginning.
      */
     LATE_TO_START('S', true),
     /**
-     * Invélido
+     * Invalid.
      */
     INVALID('I', false);
     

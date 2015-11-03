@@ -19,7 +19,7 @@ package org.helianto.task.def;
 import java.math.BigDecimal;
 
 /**
- * Sinais para a transação.
+ * Signals to transaction.
  * 
  * @author Mauricio Fernandes de Castro
  */

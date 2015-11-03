@@ -16,18 +16,18 @@
 package org.helianto.task.def;
 
 /**
- * Enumera posséveis formas de ordenação dos acompanhamentos.
+ * Enumerate possible forms of ordination of the accompaniments.
  * 
  * @author Mauricio Fernandes de Castro
  */
 public enum FollowUpOrder {
     
     /**
-     * éltima data no alto.
+     * Last data.
      */
     LAST_DATE_ON_TOP('L', -1),
     /**
-     * Primeira data no alto.
+     * First data.
      */
     FIRST_DATE_ON_TOP('F', 1);
     

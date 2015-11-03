@@ -16,7 +16,7 @@
 package org.helianto.task.def;
 
 /**
- * Define intervalos de tempo padronizados.
+ * Sets intervals of standardized times.
  * 
  * @author Mauricio Fernandes de Castro
  */

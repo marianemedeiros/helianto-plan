@@ -16,18 +16,18 @@
 package org.helianto.task.def;
 
 /**
- * Define tipos de causa.
+ * Define types of  cause.
  * 
  * @author Mauricio Fernandes de Castro
  */
 public enum CauseType {
     
     /**
-     * Possível causa.
+     * Possible cause.
      */
     LIKELY('L'),
     /**
-     * Causa raéz.
+     * Root cause.
      */
     ROOT('R');
     

@@ -3,34 +3,32 @@ package org.helianto.task.def;
 import javax.persistence.Transient;
 
 /**
- * Interface para classes de doménio sujeitas a controle de fluxo de aprovação.
+ * Interface to class of domain subject to a flow approval control.
  * 
  * @author mauriciofernandesdecastro
  */
 public interface WorkflowTarget {
 	
     /**
-     * <<Transient>> Determina, através da lista de responsabilidades, o tamanho da lista
-     * de aprovação do workflow.
+     * <<Transient>> Define, through a list of responsibilities, the list size approval workflow.
      */
     @Transient
     int getWorkflowSize();
     
     /**
-     * <<Transient>> Determina, através do tamanho da lista de responsabilidades, se o workflow 
-     * é requerido.
+     * <<Transient>> Define, through a list of responsibilities, if workflow is required. 
+     * 
      */
     @Transient
     boolean isWorkflowRequired();
     
 	/**
-	 * Fase atual do fluxo de aprovação.
+	 * Current phase of approval flow.
 	 */
 	int getWorkflowPhase();
 
     /**
-     * <<Transient>> Quando o workflow é requerido, somente pode ser fechado se o
-     * fluxo estiver em sua éltima fase.
+     * <<Transient>> When workflow is required, just can be closed if flow are in your last phase. 
      */
     @Transient
     boolean isWorkflowClosable();

@@ -17,20 +17,20 @@
 package org.helianto.task.def;
 
 /**
- * Define as ações decorrentes de um acompanhamento.
+ * Sets actions arising from an accompaniment.
  * 
- * <p>As ações procuram seguir o método 8D.</p>
+ * <p>Actions follow 8D method.</p>
  * <ul>
- * <li>Identificação: dado nopréprio relatório</li>
- * <li>Equipe: relator, participantes.</li>
- * <li>Ação imediata: quando inclui disposição, dada na ocorréncia</li>
- * <li>REVIEW: Anélise crética, eventualmente inclui ação imediata</li>
- * <li>CAUSE: causa</li>
- * <li>ACTION_PLAN: ação</li>
- * <li>ACTION_RESULT: resultado da ação</li>
- * <li>EFFECTIVENESS: eficécia</li>
- * <li>IMPACT: impacto e abrangéncia</li>
- * <li>DEPLOYMENT: encerramento e comunicação</li>
+ * <li>Identification: given in the report</li>
+ * <li>Team: reporter, attendees.</li>
+ * <li>Immediate action: when add inclination, given in occurrence.</li>
+ * <li>REVIEW: Criticism analysis. </li>
+ * <li>CAUSE: cause</li>
+ * <li>ACTION_PLAN: action</li>
+ * <li>ACTION_RESULT: action result</li>
+ * <li>EFFECTIVENESS: effectiveness</li>
+ * <li>IMPACT: impact and coverage</li>
+ * <li>DEPLOYMENT: closing and communication.</li>
  * </ul>
  * 
  * @author Mauricio Fernandes de Castro
@@ -38,31 +38,31 @@ package org.helianto.task.def;
 public enum FollowUpAction {
 
     /**
-     * Anélise crética, eventualmente inclui ação imediata.
+     * Critical Analysis.
      */
 	REVIEW('R'),
     /**
-     * Investigação de causa.
+     * Investigation of cause.
      */
 	CAUSE('C'),
     /**
-     * Planejamento da ação.
+     * Action planning.
      */
 	ACTION_PLAN('P'),
     /**
-     * Resultado da ação.
+     * Action result.
      */
 	ACTION_RESULT('A'),
     /**
-     * Verificação de eficécia.
+     * Effectiveness verification.
      */
 	EFFECTIVENESS('E'),
     /**
-     * Abrangéncia.
+     * Impact.
      */
 	IMPACT('I'),
     /**
-     * Encerramento e comunicação.
+     * Closing and communication.
      */
 	DEPLOYMENT('D');
     

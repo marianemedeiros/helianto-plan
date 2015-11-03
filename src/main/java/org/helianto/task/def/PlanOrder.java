@@ -17,7 +17,7 @@
 package org.helianto.task.def;
 
 /**
- * Define a ordem dos planos.
+ * Define plans orders.
  * 
  * @author Mauricio Fernandes de Castro
  */

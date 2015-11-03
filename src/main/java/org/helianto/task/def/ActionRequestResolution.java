@@ -17,24 +17,24 @@
 package org.helianto.task.def;
 
 /**
- * Definie resoluções para ocorréncias.
+ * Sets resolutions to occurrences
  * 
  * @author Mauricio Fernandes de Castro
  * @deprecated
  */
 public enum ActionRequestResolution {
 	
-	/** Néo iniciada */
+	/** Not STARTED */
 	IDLE('I'),
-	/** Em anélise */
+	/** In review */
 	TODO('T'),
 	/** Usar */
 	USE('1'),
-	/** Retrabalho */
+	/** Rework */
 	REWORK('2'),
-	/** Rejeição */
+	/** Rejection */
 	SCRAP('3'),
-	/** Improcedente */
+	/** Unfounded */
 	UNFOUNDED('U');
 	
 	private ActionRequestResolution(char value) {

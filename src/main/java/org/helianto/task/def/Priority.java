@@ -1,7 +1,7 @@
 package org.helianto.task.def;
 
 /**
- * Definição de prioridades.
+ * Priorities definition.
  * 
  * @author mauriciofernandesdecastro
  */

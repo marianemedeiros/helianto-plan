@@ -16,7 +16,7 @@
 package org.helianto.task.def;
 
 /**
- * Define tipos de controle.
+ * Sets type control.
  * 
  * @author Mauricio Fernandes de Castro
  */
@@ -24,19 +24,19 @@ public enum ControlType {
     
 
     /**
-     * Instrumentos.
+     * Tools.
      */
     INSTRUMENT('1'),
     /**
-     * Instrumentos.
+     * Tools.
      */
     COMPETENCE('2'),
     /**
-     * Instrumentos.
+     * Tools.
      */
     DOCUMENT('3'),   
     /**
-     * Indicadores.
+     * Indicators.
      */
     MEASURABLE('4');
     

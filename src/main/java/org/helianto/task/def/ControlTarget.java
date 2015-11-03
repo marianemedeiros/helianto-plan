@@ -7,18 +7,17 @@ import javax.persistence.Transient;
 import org.helianto.core.def.Resolution;
 
 /**
- * Em estudo.
+ * In study.
  * 
  * @author mauriciofernandesdecastro
  */
 public interface ControlTarget {
 
     /**
-     * <<Transient>> Método recomendado para encerrar um controle.
-     * 
+     * <<Transient>> Method recommended to finish a control.
      * <p>
-     * Atualiza a resolução para Resolution.DONE, coloca o progresso em 100% e 
-     * o fluxo de aprovação na éltima fase.
+     * Update a resolution to Resolution.DONE, put progress in 100% and
+     * the approval flow in the last phase.
      * </p>
      * 
      * @param actualEndDate
@@ -27,25 +26,23 @@ public interface ControlTarget {
     void close(Date actualEndDate);
         
     /**
-     * <<Transient>> Método recomendado para avaéar o relatório.
+     * <<Transient>> Method to evaluate the report.
      * 
      * <p>
-     * Atualiza o fluxo de aprovação para a próxima fase, atualiza o 
-     * progresso de acordo com o avanão.
+     * Update the approval flow to next phase, update progress according to the evaluation.
      * </p>
      */
     @Transient
     boolean forward();
     
     /**
-     * <<Transient>> Método recomendado para avançar o controle.
+     * <<Transient>> Method recommended to progress the control.
      * 
      * <p>
-     * Atualiza o fluxo de aprovação para a fase indicada, atualiza o 
-     * progresso de acordo com o avanão.
+     * Update approval flow to the indicated phase, update progress according to evaluation.
      * </p>
      * <p>
-     * No caso especial em que o relatório ainda não havia sido iniciado, inicia.
+     * In special case when report does not yet started, start it.
      * </p>
      * 
      * @param nextWorkflowPhase
@@ -66,12 +63,12 @@ public interface ControlTarget {
 //    }
     
     /**
-     * <<Transient>> Método recomendado para cancelar o controle.
+     * <<Transient>> Method to cancel control.
      * 
      * <p>
-     * Atualiza a resolução para Resolution.DONE, coloca o progresso em 0%, 
-     * o fluxo de aprovação na éltima fase e indica cancelamento através do 
-     * estado de execução.
+     * Update the resolution to Resolution.DONE, put progress in 0%, 
+     * approval flow in the last phase and indicate cancellation through the 
+     * execution state.
      * </p>
      * 
      * @param actualCancelDate

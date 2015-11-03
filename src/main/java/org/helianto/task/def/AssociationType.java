@@ -16,8 +16,7 @@
 package org.helianto.task.def;
 
 /**
- * Define como as tarefas associam-se entre si.
- * 
+ * Sets how tasks are associated between themselves.
  * @author Mauricio Fernandes de Castro
  */
 public enum AssociationType {
@@ -39,19 +38,19 @@ public enum AssociationType {
      */
     FF('3', false, false, false),
     /**
-     * Ação de contenção.
+     * Contention action.
      */
     CONTAINMENT('C', true, false, false),
     /**
-     * Ação de disposição.
+     * Disposition action.
      */
     DISPOSITION('D', true, false, false),
     /**
-     * Ação permanente.
+     * Permanent action.
      */
     PERMANENT('P', false, true, false),
     /**
-     * Ação permanente.
+     * Recurrence action.
      */
     RECURRENCE('R', false, false, true),
     /**

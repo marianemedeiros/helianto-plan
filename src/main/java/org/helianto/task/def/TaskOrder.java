@@ -16,13 +16,13 @@
 package org.helianto.task.def;
 
 /**
- * Identifica as opções de classificação
+ * Identify classification option.
  * 
  * @author Mauricio Fernandes de Castro
  */
 public enum TaskOrder {
 	
-	/** Sem classificação */
+	/**No classification */
 	NONE('N'),
 	/** Data planejada de fim */
 	SCHEDULED_END_DATE('S');

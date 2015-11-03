@@ -17,24 +17,24 @@
 package org.helianto.task.def;
 
 /**
- * Definie prosseguimento para ocorréncias.
+ * Sets pursuance to occurrence.
  * 
  * @author Mauricio Fernandes de Castro
  * @deprecated
  */
 public enum ActionRequestProceeding {
 	
-	/** Néo requer prosseguimento */
+	/** No need pursuance */
 	DONE('D'),
-	/** Iniciar melhoria */
+	/** Starts improving */
 	IMPROVEMENT('I'),
-	/** Iniciar ação corretiva */
+	/** Starts corrective action */
 	CORRECTIVE('C'),
-	/** Anexar a uma ação aberta */
+	/** Attach an open action */
 	ONGOING('O'),
-	/** Iniciar ação preventiva */
+	/** Starts preventive action */
 	PREVENTIVE('P'),
-	/** Reabrir ação anterior */
+	/** Reopen last action */
 	REINCIDENT('R');
 	
 	private ActionRequestProceeding(char value) {

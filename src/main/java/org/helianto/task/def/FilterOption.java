@@ -16,18 +16,18 @@
 package org.helianto.task.def;
 
 /**
- * Posséveis opções de filtro.
+ * Filter Options.
  * 
  * @author Mauricio Fernandes de Castro
  */
 public enum FilterOption {
     
     /**
-     * Bésico.
+     * Basic.
      */
     BASIC('B'),
     /**
-     * Avançado.
+     * Advanced.
      */
     ADVANCED('A');
     

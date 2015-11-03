@@ -17,16 +17,16 @@
 package org.helianto.task.def;
 
 /**
- * Define posséveis restrições ao filtro de ocorréncias.
+ * Sets restrictions to occurrence filters
  * 
  * @author Mauricio Fernandes de Castro
  * @deprecated
  */
 public enum ActionRequestFilterConstraint {
 	
-	/** Sem restrições */
+	/** No restrictions */
 	ANY(' '),
-	/** Associadas a um relatório */
+	/** Associated to a report */
 	ASSOCIATED('A');
 	
 	private ActionRequestFilterConstraint(char value) {

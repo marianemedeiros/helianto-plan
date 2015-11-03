@@ -16,19 +16,19 @@
 package org.helianto.task.def;
 
 /**
- * Identifica como um intervalo de datas é avaliado.
+ * Identify how an interval of dates are evaluated.
  * 
  * @author Mauricio Fernandes de Castro
  */
 public enum RangeType {
 	
-	/** Usar intervalo completo a partir das datas */
+	/** Use full interval from dates */
 	DATES('D', false, false),
-	/** Usar intervalo completo em dias */
+	/** Use full interval in days */
 	RANGE('R', false, false),
-	/** Ignorar inécio em dias */
+	/** Ignore start in days*/
 	RANGE_IGNORE_START('S', true, false),
-	/** Ignorar término em dias */
+	/** Ignore end in days */
 	RANGE_IGNORE_END('E', false, true);
 	
 	private RangeType(char value, boolean startIgnored, boolean endIgnored) {

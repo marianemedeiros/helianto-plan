@@ -16,22 +16,22 @@
 package org.helianto.task.def;
 
 /**
- * Define tipo de requisito.
+ * Sets requirement type.
  * 
  * @author Mauricio Fernandes de Castro
  */
 public enum RequirementType {
     
 	/**
-	 * Documento.
+	 * Document.
 	 */
     DOCUMENT('D'),
     /**
-     * Caso de uso
+     * Use case.
      */
     USE_CASE('U'),
     /**
-     * Fase de projeto.
+     * Project phase.
      */
     PROJECT_PHASE('P'),
     /**

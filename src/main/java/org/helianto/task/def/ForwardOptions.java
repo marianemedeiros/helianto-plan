@@ -1,26 +1,26 @@
 package org.helianto.task.def;
 
 /**
- * Opções de encaminhamento.
+ * Routing options.
  * 
  * @author mauriciofernandesdecastro
  */
 public enum ForwardOptions {
 	
 	/**
-	 * Encaminhamento não requerido (default).
+	 * Routing not required (default).
 	 */
 	NOT_REQUIRED('N'),
 	/**
-	 * Encaminhar como documento anexo a um relatório.
+	 * Routing like a attach document in a report.
 	 */
 	REPORT_DOCUMENT('R'),
 	/**
-	 * Encaminhar como avaliação para um usuário anexo a um relatório.
+	 * Routing like evaluation to an user attached to a report.
 	 */
 	REPORT_ASSESSMENT('A'),
 	/**
-	 * Encaminhar como ordem de manutenção.
+	 * Routing like maintenance order.
 	 */
 	MAINTENANCE('M');
 	
@@ -31,7 +31,7 @@ public enum ForwardOptions {
 	private char value;
 	
 	/**
-	 * Valor da enumeração.
+	 * Enumeration value.
 	 */
 	public char getValue() {
 		return value;
