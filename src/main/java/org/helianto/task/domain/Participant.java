@@ -50,7 +50,8 @@ public class Participant
     @ManyToOne
     @JoinColumn(name="staffMemberId", nullable=true)
     private StaffMember staffMember;
-
+    
+   
     /** 
      * Default constructor.
      */
