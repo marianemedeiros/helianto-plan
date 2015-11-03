@@ -38,6 +38,19 @@ public class DocumentRequirement
     @Column(length=128)
     private String actualName;
     
+    /**
+	  * Merger.
+	  * 
+	  * @param command
+  	  **/
+   		public DocumentRequirement merge(DocumentRequirement command) {
+   			super.merge(command);
+   			setOptionalCode(command.getOptionalCode());
+   			setOptionalName(command.getOptionalName());
+   			setActualName(command.getActualName());
+   			return this;
+   		}
+    
     /* Métodos da interface Sequenceable */
     
 //    @Transient

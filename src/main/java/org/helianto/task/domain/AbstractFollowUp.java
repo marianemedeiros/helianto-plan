@@ -53,6 +53,20 @@ public abstract class AbstractFollowUp
     }
 
     /**
+	  * Merger.
+	  * 
+	  * @param command
+  	  **/
+		public AbstractFollowUp merge(AbstractFollowUp command) {
+			super.merge(command);
+			setFollowUpDesc(command.getFollowUpDesc());
+			setDecision(command.getDecision());
+			setNotificationOption(command.getNotificationOption());
+			return this;
+		}
+    
+    
+    /**
      * Description.
      */
     public String getFollowUpDesc() {

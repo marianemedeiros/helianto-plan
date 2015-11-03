@@ -172,6 +172,30 @@ public class ReportFolder
 	@Transient
     private List<String> transientScriptContents = new ArrayList<String>();
     
+	/**
+	  * Merger.
+	  * 
+	  * @param command
+  	  **/
+	public ReportFolder merge(ReportFolder command) {
+			setEncoding(command.getEncoding());
+			setReportNumberPattern(command.getReportNumberPattern());
+			setPatternSuffix(command.getPatternSuffix());
+			setParsedContent(command.getParsedContent());
+			setPrivacyLevel(command.getPrivacyLevel());
+			setZIndex(command.getZIndex());
+			setFolderCaption(command.getFolderCaption());
+			setParentPath(command.getParentPath());
+			setNature(command.getNature());
+			setResolution(command.getResolution());
+			setTraceabilityItems(command.getTraceabilityItems());
+			setStartDate(command.getStartDate());
+			setEndDate(command.getEndDate());
+			setVolumeTags(command.getVolumeTags());
+			return this;
+		}
+	
+	
     /** 
      * Required constructor.
      */

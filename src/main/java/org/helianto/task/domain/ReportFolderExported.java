@@ -46,14 +46,24 @@ public class ReportFolderExported
     
 	@ManyToOne
 	@JoinColumn(name="exporterId", nullable=true)
-	private Identity exporter;  
+	private Identity exporter; 
+	
+	/**
+	  * Merger.
+	  * 
+	  * @param command
+  	  **/
+	public ReportFolderExported merge(ReportFolderExported command) {
+			setId(command.getId());
+			
+			return this;
+		}
     
     /**
      * Constructor
      */
 	public ReportFolderExported() {
 		super();
-		
 	}
 	/**
 	 * key constructor

@@ -44,6 +44,19 @@ public class PartnerReference implements Serializable {
     
     @Column(length=20)
     private String contactPhone = "";
+    
+    /**
+	  * Merger.
+	  * 
+	  * @param command
+  	  **/
+   		public PartnerReference merge(PartnerReference command) {
+   			setPartner(command.getPartner());
+   			setPartnerAlias(command.getPartnerAlias());
+   			setContactName(command.getContactName());
+   			setContactPhone(command.getContactPhone());
+   			return this;
+   		}
 
     /**
      * Contrutor padréo.

@@ -87,6 +87,23 @@ public class ReportPhase
     @Temporal(TemporalType.TIMESTAMP)
     private Date scheduledEndDate;
 
+    /**
+   	 * Merger.
+   	 * 
+   	 * @param command
+   	 **/
+    public ReportPhase merge(ReportPhase command) {
+   			setLiteral(command.getLiteral());
+   			setPhaseName(command.getPhaseName());
+   			setContent(command.getContent());
+   			setEncoding(command.getEncoding());
+   			setEstimate(command.getEstimate());
+   			setScheduledStartDate(command.getScheduledStartDate());
+   			setScheduledEndDate(command.getScheduledEndDate());
+   			return this;
+   		}
+       
+    
     /** 
      * Default constructor.
      */

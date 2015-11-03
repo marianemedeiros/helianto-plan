@@ -61,6 +61,20 @@ public class TestGroup
     private String reportComment = "";
     
     /**
+	  * Merger.
+	  * 
+	  * @param command
+  	  **/
+    public TestGroup merge(TestGroup command) {
+   			setId(command.getId());
+   			setTestCode(command.getTestCode());
+   			setIssueDate(command.getIssueDate());
+   			setResolution(command.getResolution());
+   			setReportComment(command.getReportComment());
+   			return this;
+   		}
+    
+    /**
      * Construtor.
      */
     public TestGroup() {

@@ -40,6 +40,19 @@ public class UploadableContent
     private transient MultipartFile file;
    
     /**
+	  * Merger.
+	  * 
+	  * @param command
+  	  **/
+    	public UploadableContent merge(UploadableContent command) {
+   			setContent(command.getContent());
+   			setEncoding(command.getEncoding());
+   			setMultipartFileContentType(command.getMultipartFileContentType());
+   			return this;
+   		}
+    
+    
+    /**
      * Default constructor.
      */
     public UploadableContent() {

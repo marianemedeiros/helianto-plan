@@ -49,6 +49,16 @@ public class ProcessReference
    
 	@Column(length=32)
 	private String processCode = "";
+	
+	/**
+	  * Merger.
+	  * 
+	  * @param command
+  	  **/
+   		public ProcessReference merge(ProcessReference command) {
+   			setProcessCode(command.getProcessCode());
+   			return this;
+   		}
 
     /**
      * Contrutor padrão.

@@ -74,6 +74,20 @@ public class FollowUp
     private int duration = 30;
     
     private char followUpAction = FollowUpAction.ACTION_PLAN.getValue();
+    
+    
+    /**
+	  * Merger.
+	  * 
+	  * @param command
+  	  **/
+   		public FollowUp merge(FollowUp command) {
+   			super.merge(command);
+   			setReport(command.getReport());
+   			setDuration(command.getDuration());
+   			setFollowUpAction(command.getFollowUpAction());
+   			return this;
+   		}
 
 	/** 
 	 * Default constructor.

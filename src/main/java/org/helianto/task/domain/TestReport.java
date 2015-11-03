@@ -65,6 +65,23 @@ public class TestReport
     private String reportComment = "";
     
     /**
+	  * Merger.
+	  * 
+	  * @param command
+  	  **/
+    	public TestReport merge(TestReport command) {
+   			setId(command.getId());
+   			setReportCode(command.getReportCode());
+   			setRootFolder(command.getRootFolder());
+   			setIssueDate(command.getIssueDate());
+   			setResolution(command.getResolution());
+   			setParsedContent(command.getParsedContent());
+   			setReportComment(command.getReportComment());
+   			return this;
+   		}
+    
+    
+    /**
      * Construtor.
      */
     public TestReport() {

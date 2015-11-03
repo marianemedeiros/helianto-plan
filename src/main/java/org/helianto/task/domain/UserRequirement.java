@@ -61,6 +61,25 @@ public class UserRequirement
     
     private int complete;
     
+    /**
+   	 * Merger.
+   	 * 
+   	 * @param command
+   	 **/
+    public UserRequirement merge(UserRequirement command) {
+   			super.merge(command);
+    		setOptionalKey(command.getOptionalKey());
+   			setDisplayName(command.getDisplayName());
+   			setOptionalFirstName(command.getOptionalFirstName());
+   			setOptionalLastName(command.getOptionalLastName());
+   			setOptionalGender(command.getOptionalGender());
+   			setOptionalAppellation(command.getOptionalAppellation());
+   			setOptionalBirthDate(command.getOptionalBirthDate());
+   			setFrequency(command.getFrequency());
+   			setComplete(command.getComplete());
+   			return this;
+   		}
+    
     /* Métodos da interface Sequenceable */
     
 //    @Transient

@@ -46,6 +46,18 @@ public class ReportKnowledge
 	
     private char knowledgeLevel;
     
+    
+    /**
+	  * Merger.
+	  * 
+	  * @param command
+  	  **/
+	public ReportKnowledge merge(ReportKnowledge command) {
+			setId(command.getId());
+			setKnowledgeLevel(command.getKnowledgeLevel());
+			return this;
+		}
+    
     /**
      * Default constructor.
      */

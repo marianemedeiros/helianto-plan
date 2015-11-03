@@ -27,6 +27,18 @@ public class Volume
 	@Column(length=64)
 	private String volumeName;
 	
+	 /**
+	  * Merger.
+	  * 
+	  * @param command
+   	  **/
+    public Volume merge(Volume command) {
+    		setVolumeCode(command.getVolumeCode());
+   			setVolumeName(command.getVolumeName());
+   		   	return this;
+   		}
+    
+	
 	/**
 	 * Default constructor.
 	 */

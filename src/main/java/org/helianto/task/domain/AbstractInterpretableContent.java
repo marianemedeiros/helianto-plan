@@ -60,6 +60,18 @@ public abstract class AbstractInterpretableContent
 		return category;
 	}
 	
+	/**
+	  * Merger.
+	  * 
+	  * @param command
+  	  **/
+			public AbstractInterpretableContent merge(AbstractInterpretableContent command) {
+				super.merge(command);
+				setParsedContent(command.getParsedContent());
+				setSecuredContent(command.getSecuredContent());
+				return this;
+			}
+	
     /**
      * Conteúdo transformado.
      */

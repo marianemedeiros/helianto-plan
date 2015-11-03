@@ -74,6 +74,20 @@ public class ReportReview
     
     @Column(length=512)
     private String parsedContent = "";
+    
+    /**
+	  * Merger.
+	  * 
+	  * @param command
+  	  **/
+    public ReportReview merge(ReportReview command) {
+   			setTimeKey(command.getTimeKey());
+   			setReviewText(command.getReviewText());
+   			setWorkflowLevel(command.getWorkflowLevel());
+   			setParsedContent(command.getParsedContent());
+   			return this;
+   		}
+       
 
 	/** 
 	 * Default constructor.

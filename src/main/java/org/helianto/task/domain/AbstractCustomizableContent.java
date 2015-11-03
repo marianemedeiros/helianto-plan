@@ -3,6 +3,7 @@ package org.helianto.task.domain;
 import javax.persistence.Column;
 import javax.persistence.MappedSuperclass;
 
+
 /**
  * Classe base para conteúdo que pode ter o código personalizado.
  * 
@@ -20,6 +21,19 @@ public class AbstractCustomizableContent
 	@Column(length=12)
     private String suffix = "";
 
+	
+	/**
+	  * Merger.
+	  * 
+	  * @param command
+  	  **/
+		public AbstractCustomizableContent merge(AbstractCustomizableContent command) {
+			super.merge(command);
+			setCustomPrefix(command.getCustomPrefix());
+			setSuffix(command.getSuffix());
+			return this;
+		}
+	
     /**
      * Permite o controle de chave secundária com um prefixo diferente do
      * usado como nome da pasta.
