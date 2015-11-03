@@ -11,6 +11,7 @@ import org.helianto.core.domain.Entity;
 import org.helianto.core.internal.AbstractInternalEntity;
 import org.helianto.core.internal.InterpretableCategory;
 import org.helianto.core.number.Sequenceable;
+import org.helianto.task.domain.AbstractFollowUp;
 import org.helianto.task.domain.Report;
 
 /**
@@ -37,6 +38,19 @@ public abstract class AbstractRequirement
     
     @Column(length=255)
     private String parsedContent;
+    
+    /**
+   	+	 * Merger.
+   	+	 * 
+   	+	 * @param command
+   	+	 */
+   		public AbstractRequirement merge(AbstractRequirement command) {
+   			setSequence(command.getSequence());
+   			setRemark(command.getRemark());
+   			setParsedContent(command.getParsedContent());
+   			return this;
+   		}       
+    
     
     /* Métodos obtidos do relatório */
     
