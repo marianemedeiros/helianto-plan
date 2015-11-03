@@ -174,6 +174,9 @@ public class Report
     @JoinColumn(name="categoryId", nullable=true)
     private Category category;
     
+    @Transient
+    private Integer categoryId;
+    
     private int workflowPhase = 0;
     
     private int mainRequirementSequence = -1;
@@ -288,14 +291,61 @@ public class Report
     }
     
     /**
+     * Form constructor.
+     * 
+     * @param id
+     * @param internalNumber
+     * @param reportCode
+     * @param summary
+     * @param resolution
+     * @param nextCheckDate
+     * @param taskDesc
+     * @param categoryId
+     * @param content
+     * @param relativeSize
+     * @param priority
+     * @param frequency
+     * @param reportFolderId
+     * @param phase
+     */
+	public Report(Integer id
+			, Long internalNumber
+			, String reportCode
+			, String summary
+			, Character resolution
+			, Date nextCheckDate
+			, String taskDesc
+			, Integer categoryId
+			, byte[] content
+			, Integer relativeSize
+			, Character priority
+			, Integer frequency
+			, Integer reportFolderId 
+			, Character phase
+			) {
+		setId(id);
+		setInternalNumber(internalNumber);
+		setReportCode(reportCode);
+		setSummary(summary);
+		setResolution(resolution);
+		setNextCheckDate(nextCheckDate);
+		setTaskDesc(taskDesc);
+		setCategoryId(categoryId);
+		setContent(content);
+		setRelativeSize(relativeSize);
+		setPriority(priority);
+		setFrequency(frequency);
+		setReportFolderId(reportFolderId);
+		setPhase(phase);
+	}
+	
+    /**
      * Anexa padrão de numeração à chave para geração de números.
      */
-//    @Transient
     public String getInternalNumberKey() {
         return new StringBuilder("REPORT").append(getNumberPatternPrefix()).toString();
     }
 
-//    @Transient
     public int getStartNumber() {
     	return 1;
     }
@@ -303,7 +353,6 @@ public class Report
     /**
      * Anexa padrão de numeração à chave para geração de números.
      */
-//    @Transient
     public String getSequenceGenerator() {
 //    	if (getReportFolder()!=null) {
 //    		return new StringBuilder(getReportFolder().get)
@@ -326,7 +375,6 @@ public class Report
      * 
      * @param actualEndDate
      */
-//    @Transient
     public void close(Date actualEndDate) {
     	if (actualEndDate==null) {
     		actualEndDate = new Date();
@@ -347,7 +395,6 @@ public class Report
      * progresso de acordo com o avanão.
      * </p>
      */
-//    @Transient
     public boolean forward() {
 		return forward(getWorkflowPhase() + 1);
     }
@@ -365,7 +412,6 @@ public class Report
      * 
      * @param nextWorkflowPhase
      */
-//    @Transient
     public boolean forward(int nextWorkflowPhase) {
     	if (nextWorkflowPhase<=getWorkflowSize()) {
 			if (getResolution()==Resolution.PRELIMINARY.getValue()) {
@@ -389,7 +435,6 @@ public class Report
      * 
      * @param actualCancelDate
      */
-//    @Transient
     public void cancel(Date actualCancelDate) {
     	if (actualCancelDate==null) {
     		actualCancelDate = new Date();
@@ -410,7 +455,6 @@ public class Report
      * Caso ainda não iniciado, data de inécio é a data programada.
      */
     @Override
-//    @Transient
     protected Date internalActualStartDate() {
     	if (getResolution()==Resolution.PRELIMINARY.getValue()) {
     		return getScheduledStartDate();
@@ -424,7 +468,6 @@ public class Report
     /**
      * A data mais cedo entre inécio programado e verdadeiro.
      */
-//    @Transient
     public Date getEarliestDate() {
     	if (getScheduledStartDate()!=null && getScheduledStartDate().before(getActualStartDate())) {
     		return getScheduledStartDate();
@@ -436,7 +479,6 @@ public class Report
      * Caso ainda não terminado, data de fim é a data programada.
      */
     @Override
-//    @Transient
     protected Date internalActualEndDate() {
     	if (getResolution()!=Resolution.DONE.getValue()) {
     		return getScheduledEndDate();
@@ -450,7 +492,6 @@ public class Report
     /**
      * A data mais tarde entre fim programado e verdadeiro.
      */
-//    @Transient
     public Date getLatestDate() {
     	if (getScheduledEndDate()!=null && !getScheduledEndDate().before(getActualEndDate())) {
     		return getScheduledEndDate();
@@ -473,7 +514,6 @@ public class Report
      * 
      * @param reportCode
      */
-//    @Transient
     protected String internalReportCode(String reportCode) {
 //    	if (reportCode!=null && reportCode.length()>0) {
 //    		return reportCode;
@@ -487,7 +527,6 @@ public class Report
     /**
      * Padrão para formatação de códigos de relatório.
      */
-//    @Transient
     public String getNumberPattern() {
     	if (getReportFolder()!=null && getReportFolder().getReportNumberPattern()!=null) {
     		return getReportFolder().getReportNumberPattern();
@@ -498,7 +537,6 @@ public class Report
     /**
      * Extrai o prefixo do padrão para formatação de códigos de relatório.
      */
-//    @Transient
     public String getNumberPatternPrefix() {
     	String[] prefixSegments = getNumberPattern().split("'");
     	if (prefixSegments.length>1) {
@@ -521,7 +559,6 @@ public class Report
     /**
      * Verdadeiro se não há relator.
      */
-//    @Transient
 	public boolean isReporterNull() {
 		return getReporter()==null ? true : false;
 	}
@@ -529,7 +566,6 @@ public class Report
     /**
      * ID do relator, ou do solcitante, na falta do primeiro.
      */
-//    @Transient
 	public long getReporterId() {
     	if (getReporter()!=null) {
     		return getReporter().getId();
@@ -543,7 +579,6 @@ public class Report
     /**
      * Nome a exibir do relator, ou do solcitante, na falta do primeiro.
      */
-//    @Transient
 	public String getReporterDisplayName() {
     	if (getReporter()!=null) {
     		return getReporter().getDisplayName();
@@ -558,7 +593,6 @@ public class Report
      * Apelido do relator, ou do solcitante, na falta do primeiro.
      * @deprecated
      */
-//    @Transient
 	public String getReporterOptionalAlias() {
         return isReporterNull() ? getOwnerDisplayName() : reporter.getDisplayName();
 	}
@@ -566,7 +600,6 @@ public class Report
     /**
      * Nome do relator, ou do solcitante, na falta do primeiro.
      */
-//    @Transient
 	public String getReporterName() {
     	if (getReporter()!=null) {
     		return getReporter().getIdentityName();
@@ -591,7 +624,6 @@ public class Report
     /**
      * <<Transient>> Verdadeiro se não há avaliado.
      */
-//    @Transient
 	public boolean isAssesseeNull() {
 		return getAssessee()==null ? true : false;
 	}
@@ -599,7 +631,6 @@ public class Report
     /**
      * <<Transient>> Apelido do avaliado.
      */
-//    @Transient
 	public String getAssesseeDisplayName() {
         return isAssesseeNull() ? "" : getAssessee().getDisplayName();
 	}
@@ -608,7 +639,6 @@ public class Report
      * <<Transient>> Apelido do avaliado.
      * @deprecated
      */
-//    @Transient
 	public String getAssesseeOptionalAlias() {
         return isAssesseeNull() ? "" : getAssessee().getDisplayName();
 	}
@@ -616,7 +646,6 @@ public class Report
     /**
      * <<Transient>> Nome do avaliado.
      */
-//    @Transient
 	public String getAssesseeName() {
         return isAssesseeNull() ? "" : getAssessee().getIdentityName();
 	}
@@ -644,7 +673,6 @@ public class Report
     public String getPrefix() {
 		return prefix;
 	}
-//    @Transient
     protected StringBuilder getPrefixAsBuilder() {
     	if (getPrefix()!= null && !getPrefix().equals("")) {
     		return new StringBuilder(getPrefix()).append(" ");
@@ -658,7 +686,6 @@ public class Report
     /**
      * <<Transient>> Permite subordinar o prefixo do relatório a uma condição externa.
      */
-//    @Transient
     protected String getInternalPrefix() {
     	if (getSeries()!=null) {
     		this.prefix=getSeries().getFolderCode();
@@ -679,7 +706,6 @@ public class Report
     /**
      * <<Transient>> Permite subordinar o resumo do relatório a uma condição externa.
      */
-//    @Transient
     protected String getInternalSummary() {
     	if (getAssessee()!=null) {
     		this.summary=getAssesseeName();
@@ -690,7 +716,6 @@ public class Report
     /**
      * <<Transient>> Verifica se pode alterar o resumo.
      */
-//    @Transient
     public boolean isSummaryEditable() {
     	if (getAssessee()==null) {
     		// se não existe uma pessoa em avaliação, permite edição
@@ -702,7 +727,6 @@ public class Report
     /**
      * <<Transient>> Descrição suméria com no méximo 20 caracteres.
      */
-//    @Transient
     public String getTaskShortSummary() {
     	if (summary==null) {
     		return "";
@@ -713,7 +737,6 @@ public class Report
 		return new StringBuilder(summary.substring(0, 17)).append(" ...").toString();
 	}
 
-//    @Transient
 	public String getLabel() {
 		return getSummary();
 	}
@@ -728,7 +751,6 @@ public class Report
         this.taskDesc = taskDesc;
     }
     
-//    @Transient
     public String getReportDesc() {
         return this.taskDesc;
     }
@@ -759,7 +781,6 @@ public class Report
     /**
      * <<Transient>> Conveniente para exibir a pasta que guarda este documento.
      */
-//    @Transient
     @JsonIgnore
     public ReportFolder getReportFolder() {
     	return this.series;
@@ -774,7 +795,6 @@ public class Report
     /**
      * <<Transient>> Conveniente para recuperar tipo de conteúdo.
      */
-//    @Transient
     public char getContentType() {
     	if (getReportFolder()!=null) {
     		return getReportFolder().getContentType();
@@ -785,7 +805,6 @@ public class Report
     /**
      * <<Transient>> Conveniente recuperar os membros da equipe.
      */
-//    @Transient
     @JsonIgnore
     public Set<StaffMember> getStaffMembers() {
     	if (getReportFolder()!=null) {
@@ -801,7 +820,6 @@ public class Report
      * Caso não haja pasta, retorna o nome especial "JOURNAL".
      * </p>
      */
-//    @Transient
     public String getReportFolderCode() {
 		if(getReportFolder()!=null) {
 			return getReportFolder().getFolderCode();
@@ -812,7 +830,6 @@ public class Report
     /**
      * Conveniente para exibir o nome da pasta que guarda este documento.
      */
-//    @Transient
     public String getReportFolderName() {
 		if(getReportFolder()!=null) {
 			return getReportFolder().getFolderName();
@@ -823,7 +840,6 @@ public class Report
     /**
      * Conveniente para determinar se pode ser planejado pela fase.
      */
-//    @Transient
     @JsonIgnore
     public boolean isScheduleByPhaseEnabled() {
     	if (getSeries()!=null && getSeries().getPhases()!=null && getSeries().getPhases().size()>0) {
@@ -835,7 +851,6 @@ public class Report
     /**
      * Conveniente para listar as fases em ordem.
      */
-//    @Transient
     @JsonIgnore
     public List<ReportPhase> getPhases() {
     	List<ReportPhase> phases = new ArrayList<ReportPhase>();
@@ -855,7 +870,6 @@ public class Report
 		this.nature = nature;
 	}
     
-//	@Transient
 	public String[] getNatureAsArray() {
 		return StringListUtils.stringToArray(getNature());
 	}
@@ -865,7 +879,6 @@ public class Report
 
 
     
-//    @Transient
     public byte[] getContent() {
     	if (getReportContent()!=null) {
     		return getReportContent().getContent();
@@ -887,7 +900,6 @@ public class Report
     /**
      * Helper method to get text content as String.
      */
-//    @Transient
     public String getContentAsString() {
     	if (getContent()!=null && isText()) {
     		return new String(getContent());
@@ -898,7 +910,6 @@ public class Report
 		setContent(contentAsString);
 	}
     
-//    @Transient
     public int getContentSize() {
     	if (getReportContent()!=null) {
     		return getReportContent().getContentSize();
@@ -906,7 +917,6 @@ public class Report
     	return 0;
     }
     
-//	@Transient
 	public String getEncoding() {
     	if (getReportContent()!=null) {
     		return getReportContent().getEncoding();
@@ -919,7 +929,6 @@ public class Report
     	}
 	}
 
-//	@Transient
 	public String getMultipartFileContentType() {
     	if (getReportContent()!=null) {
     		return getReportContent().getMultipartFileContentType();
@@ -935,7 +944,6 @@ public class Report
     /**
      * True if {@link #afterInternalNumberSet(long)} starts with "text".
      */
-//    @Transient
     public boolean isText() {
     	if (getMultipartFileContentType().startsWith("text")) {
     		return true;
@@ -946,7 +954,6 @@ public class Report
     /**
      * True if {@link #afterInternalNumberSet(long)} starts with "text/html".
      */
-//    @Transient
     public boolean isHtml() {
     	if (getMultipartFileContentType().startsWith("text/html")) {
     		return true;
@@ -957,7 +964,6 @@ public class Report
     /**
      * True if {@link #afterInternalNumberSet(long)} starts with "image".
      */
-//    @Transient
     public boolean isImage() {
     	if (getMultipartFileContentType().startsWith("image")) {
     		return true;
@@ -968,7 +974,6 @@ public class Report
     /**
      * By default, a document can be changed.
      */
-//    @Transient
     public boolean isLocked() {
     	return false;
     }
@@ -1016,7 +1021,6 @@ public class Report
 	/**
 	 * <<Transient>> Convenience method to read uploaded data.
 	 */
-//	@Transient
 	public void processFile() throws IOException {
 		setContent(file.getBytes());
 		setMultipartFileContentType(file.getContentType());
@@ -1046,7 +1050,6 @@ public class Report
 		this.actualWork = actualWork;
 	}
 	
-//	@Transient
 	public char getWorkingUnit() {
 		return 'H';
 	}
@@ -1068,7 +1071,6 @@ public class Report
 	 * Pela fórmula: (1 - (${complete}/100)).
 	 * </p>
 	 */
-//	@Transient
 	public BigDecimal getRemainingProgress() {
 		return BigDecimal.ONE.add(new BigDecimal(getComplete()).divide(new BigDecimal(-100)));
 	}
@@ -1079,7 +1081,6 @@ public class Report
 	 * Pela fórmula: (${relativeSize} * ${remainingProgress}).
 	 * </p>
 	 */
-//	@Transient
 	public BigDecimal getRemainingSize() {
 		return new BigDecimal(getRelativeSize()).multiply(getRemainingProgress());
 	}
@@ -1088,7 +1089,6 @@ public class Report
 	 * Implementação da interface programmable, para uso com scripts.
 	 */
 	
-//	@Transient
 	public String[] getScriptItemsAsArray() {
 		if (isCategoryEnabled()) {
 			return getCategory().getScriptItemsAsArray();
@@ -1096,7 +1096,6 @@ public class Report
 		return null;
 	}
 	
-//	@Transient
 	public List<String> getScriptList() {
 		if (isCategoryEnabled()) {
 			return getCategory().getScriptList();
@@ -1104,7 +1103,6 @@ public class Report
 		return null;
 	}
 	
-//    @Transient
     public String getScriptItems() {
 		if (isCategoryEnabled()) {
 			return getCategory().getScriptItems();
@@ -1148,7 +1146,6 @@ public class Report
     /**
      * <<Transient>> Matriz de ordem de apresentação.
      */
-//    @Transient
     public String[] getPresentationOrderAsArray() {
 		return StringListUtils.stringToArray(getPresentationOrder());
 	}
@@ -1169,7 +1166,6 @@ public class Report
     /**
      * <<Transient>> Lista de rastreabilidade.
      */
-//    @Transient
     public String[] getTraceabilityAsArray() {
 		return StringListUtils.stringToArray(getTraceability());
 	}
@@ -1216,7 +1212,6 @@ public class Report
     /**
      * Fase como uma instância da classe Phase.
      */
-//    @Transient
     @JsonIgnore
     public ReportPhase getPhaseAsObject() {
     	if (isScheduleByPhaseEnabled()) {
@@ -1242,9 +1237,18 @@ public class Report
 	}
 	
 	/**
+	 * <<Transient>> category id.
+	 */
+    public Integer getCategoryId() {
+		return categoryId;
+	}
+    public void setCategoryId(Integer categoryId) {
+		this.categoryId = categoryId;
+	}
+    
+	/**
 	 * <<Transient>> Verdadeiro se a categoria é da pasta.
 	 */
-//	@Transient
     @JsonIgnore
 	public boolean isFolderCategoryEnabled() {
 		return getReportFolder()!=null && getReportFolder().isCategoryEnabled();
@@ -1257,7 +1261,6 @@ public class Report
 	 * Implementação padrão herda a categoria da pasta, quando houver.
 	 * </p>
 	 */
-//	@Transient
     @JsonIgnore
 	protected Category getInternalCategory() {
 		if (isCategoryOverrideAllowed()) {
@@ -1272,7 +1275,6 @@ public class Report
 	/**
 	 * <<Transient>> Verdadeiro se a categoria existe.
 	 */
-//	@Transient
     @JsonIgnore
 	public boolean isCategoryEnabled() {
 		return getCategory()!=null;
@@ -1281,7 +1283,6 @@ public class Report
 	/**
 	 * <<Transient>> Verdadeiro se pode substituir a categoria da pasta.
 	 */
-//	@Transient
     @JsonIgnore
 	public boolean isCategoryOverrideAllowed() {
 		return isFolderCategoryEnabled() && getReportFolder().isCategoryOverrideAllowed();
@@ -1312,7 +1313,6 @@ public class Report
 	/**
 	 * <<Transient>> Propriedades derivadas da categoria.
 	 */
-//	@Transient
     @JsonIgnore
 	public Map<String, Object> getCustomPropertiesAsMap() {
 		if (isCategoryEnabled()) {
@@ -1324,7 +1324,6 @@ public class Report
     /**
      * <<Transient>> Lista de responsabilidades convertida em matriz.
      */
-//    @Transient
     @JsonIgnore
     public String[] getCustomWorkflowRolesAsArray() {
     	if (isCategoryEnabled() && getCategory().isWorkflowEnabled()) {
@@ -1336,7 +1335,6 @@ public class Report
     /**
      * <<Transient>> Lista de responsabilidades convertida em mapa.
      */
-//    @Transient
     @JsonIgnore
     public Map<String, String> getCustomWorkflowRolesAsMap() {
     	if (isCategoryEnabled() && getCategory().isWorkflowEnabled()) {
@@ -1349,7 +1347,6 @@ public class Report
      * <<Transient>> Conveniente para recuperar a próxima responsabilidade 
      * na lista de aprovação, ou nulo, se não houver.
      */
-//    @Transient
     @JsonIgnore
     public String getNextWorkflowRole() {
     	if (isCategoryEnabled() && getCategory().isWorkflowEnabled()) {
@@ -1378,7 +1375,6 @@ public class Report
      * <<Transient>> Determina, através da lista de responsabilidades, o tamanho da lista
      * de aprovação do workflow.
      */
-//    @Transient
     public int getWorkflowSize() {
     	return getCustomWorkflowRolesAsArray().length;
     }
@@ -1387,7 +1383,6 @@ public class Report
      * <<Transient>> Determina, através da lista de responsabilidades, se o workflow 
      * é requerido para este relatório.
      */
-//    @Transient
     public boolean isWorkflowRequired() {
     	return getWorkflowSize() > 0;
     }
@@ -1396,7 +1391,6 @@ public class Report
      * <<Transient>> Quando o workflow é requerido, somente pode ser fechado se o
      * relatório estiver em sua última fase.
      */
-//    @Transient
     public boolean isWorkflowClosable() {
     	if (isWorkflowRequired() && getWorkflowPhase()!=getWorkflowSize()) {
     		return false;
@@ -1407,27 +1401,10 @@ public class Report
     /**
      * <<Transient>> Determina o avanço obtido em cada etapa do workflow.
      */
-//    @Transient
     public int getWorkflowProgressIncrement() {
     	return 0;
     }
     
-    /**
-     * Conveniente para associar o principal documento a partir da lista.
-     * 
-     * @param mainRequirementList
-     * @param mainSequence
-     */
-// TODO  
-//    public void setMainRequirement(List<DocumentRequirement> mainRequirementList, int mainSequence) {
-//    	for (DocumentRequirement mainRequirement: mainRequirementList) {
-//    		if (mainRequirement.getSequence()==mainSequence) {
-//    			setMainRequirement(mainRequirement);
-//    			break;
-//    		}
-//    	}
-//	}
-//    
     /**
      * Reere-se à sequência escolhida para o pricipal documento.
      */
@@ -1437,18 +1414,6 @@ public class Report
     public void setMainRequirementSequence(int mainRequirementSequence) {
 		this.mainRequirementSequence = mainRequirementSequence;
 	}
-    
-    /**
-     * Conveniente para associar o principal documento a partir da lista.
-     * 
-     * @param mainRequirementList
-     */
-    //TODO
-//    public void setMainRequirement(List<DocumentRequirement> mainRequirementList) {
-//    	if (getMainRequirementSequence()>=0 && getMainRequirementSequence() < mainRequirementList.size()) {
-//    		setMainRequirement(mainRequirementList, getMainRequirementSequence());
-//    	}
-//	}
     
     /**
      * Conjunto de acompanhamentos.
@@ -1464,7 +1429,6 @@ public class Report
     /**
 	 * <<Transient>> Lista ordenada de acompanhamentos.
 	 */
-//    @Transient
     @JsonIgnore
     public List<FollowUp> getFollowUpOrderedList() {
         return this.followUpList;

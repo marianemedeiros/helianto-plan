@@ -38,21 +38,48 @@ public interface ReportRepository
     			"order by report.reporter.id, report.owner.id ")
 	List<Report> findToDate(@Param("resolution") char resolution);
 
+	public static final String QUERY = "SELECT new "
+			+ "org.helianto.task.domain.Report"
+			+ "(report.id"
+			+ ", report.internalNumber"
+			+ ", report.reportCode"
+			+ ", report.summary"
+			+ ", report.resolution"
+			+ ", report.nextCheckDate"
+			+ ", report.taskDesc"
+			+ ", report.category.id"
+			+ ", report.reportContent.content"
+			+ ", report.relativeSize"
+			+ ", report.priority"
+			+ ", report.frequency"
+			+ ", report.series.id"
+			+ ", report.phase"
+			+ ") "
+			+ " FROM Report report ";
+	
+	/**
+	 * Find by reportFolderId on phase.
+	 * 
+	 * @param reportFolderId
+	 * @param phases
+	 * @param pageable
+	 */
+	@Query(QUERY
+			+ "WHERE report.series.id = ?1 "
+			+ "AND report.phase in ?2")
+	Page<Report> findBySeries_IdOnPhase(int reportFolderId, char[] phases, Pageable pageable);
+	
 	/**
 	 * 
 	 * Find by reportFolderId.
 	 * 
 	 * @param reportFolderId
+	 * @param pageable
 	 */
-	
-//	@Query("select new org.helianto.report.controller.ReportAdapter(report.id, report.series.folderName, report.reportCode, "
-//			+ "report.summary, report.nextCheckDate, report.resolution) "
-//			+ "from Report report "
-//			+ "where report.series.id= ?1"
-//			+ "")
-	
-//	List<ReportAdapter> findBySeriesId(int reportFolderId);
-	
+	@Query(QUERY
+			+ "WHERE report.series.id = ?1 ")
+	Page<Report> findBySeries_Id(int reportFolderId, Pageable pageable);
+
 	/**
 	 * Relatórios em aberto, ou seja, não encerrados (D), não suspensos (W) 
 	 * ou não cancelados (X).
@@ -215,6 +242,7 @@ public interface ReportRepository
 	 * Find by reportFolderId.
 	 * 
 	 * @param reportFolderId
+	 * @deprecated
 	 */
 	@Query("SELECT new "
 			+ "org.helianto.task.repository.ReportAdapter"
@@ -233,6 +261,7 @@ public interface ReportRepository
 	 * Find by reportFolderId on phase.
 	 * 
 	 * @param reportFolderId
+	 * @deprecated
 	 */
 	@Query("SELECT new "
 			+ "org.helianto.task.repository.ReportAdapter"
