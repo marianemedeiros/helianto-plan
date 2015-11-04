@@ -347,7 +347,7 @@ public class ReportFolder
     }
 
     /**
-     * Padréo para geração dos códigos dos relatórios da pasta.
+     * Generation codes of reports folders.
      */
     public String getReportNumberPattern() {
     	return internalReportNumberPattern(reportNumberPattern);
@@ -364,7 +364,7 @@ public class ReportFolder
 	}
     
     /**
-     * Permite que sublcasses alterem o padréo para geração dos códigos do relatório.
+     * Allow subclass change the default generation codes of reports.
      * 
      * @param reportNumberPattern
      */
@@ -421,7 +421,7 @@ public class ReportFolder
 	}
 
 	/**
-	 * Conteúdo da pasta sempre seré html.
+	 * Context folder always be html.
 	 */
 	public String getMultipartFileContentType() {
 		return "text/html";
@@ -498,7 +498,7 @@ public class ReportFolder
 	}
     
     /**
-     * Categoria.
+     * Category.
      */
 	public Category getCategory() {
 		return category;
@@ -518,14 +518,14 @@ public class ReportFolder
 	}
 	
 	/**
-	 * <<Transient>> Verdadeiro se hé uma categoria.
+	 * <<Transient>> True if have category.
 	 */
 	public boolean isCategoryEnabled() {
 		return getCategory()!=null;
 	}
 	
 	/**
-	 * Verdadeiro se os relatórios desta pasta podem subsituir a categoria.
+	 * True if folders reports can substitute a category.
 	 */
 	public boolean isCategoryOverrideAllowed() {
 		return categoryOverrideAllowed;
@@ -545,7 +545,7 @@ public class ReportFolder
 	}
     
     /**
-     * Utilizado para ordenar pastas.
+     * Utilized to folder instructions.
      */
     public String getZIndex() {
 		return internalZIndex(this.zIndex);
@@ -555,8 +555,7 @@ public class ReportFolder
 	}
     
     /**
-     * Chamado internamente por {@link #getZIndex()}, facilita és subclasses 
-     * alterar a atribuição de zIndex.
+     * Call by {@link #getZIndex()}.
      * 
      * @param zIndex
      */
@@ -612,7 +611,7 @@ public class ReportFolder
 	}
     
     /**
-     * Natureza da pasta, como lista csv de palavras-chave.
+     * Nature of folders, like list csv of key words.
      */
     public String getNature() {
 		return nature;
@@ -622,7 +621,7 @@ public class ReportFolder
 	}
     
     /**
-     * Resolução.
+     * Resolution.
      */
     public Resolution2 getResolution() {
 		return resolution;
@@ -632,7 +631,7 @@ public class ReportFolder
 	}
     
     /**
-     * <<Transient>> Lista de naturezas como String[].
+     * <<Transient>> List of nature as String[].
      */
 	public String[] getNatureAsArray() {
 		return StringListUtils.stringToArray(getNature());
@@ -642,7 +641,7 @@ public class ReportFolder
 	}
 	
     /**
-     * Caminho
+     * Path
      */
     public String getParentPath() {
 		return parentPath;
@@ -660,10 +659,10 @@ public class ReportFolder
     }
 
     /**
-     * Lista de itens requeridos para rastreabilidade, como lista CSV de pares KV.
+     * List of items required to traceability, like list CVS of pair KV.
      * 
      * <p>
-     * Exemplo: UC1=Use case 1, UC2=Use case 2, etc.
+     * Examples: UC1=Use case 1, UC2=Use case 2, etc.
      * </p>
      */
     public String getTraceabilityItems() {
@@ -674,7 +673,7 @@ public class ReportFolder
 	}
     
     /**
-     * <<Transient>> Lista de Scripts como String[].
+     * <<Transient>> List of Scripts as String[].
      */
     @JsonIgnore
     public Map<String, String> getTraceabilityItemsAsMap() {
@@ -682,7 +681,7 @@ public class ReportFolder
 	}
     
     /**
-     * Lista de scripts, como lista CSV de códigos dos scripts.
+     * List of Scripts as list CSV of codes scripts.
      */
     public String getScriptItems() {
     	if (isCategoryEnabled()) {
@@ -692,21 +691,21 @@ public class ReportFolder
 	}
     
     /**
-     * <<Transient>> Lista de itens requeridos para rastreabilidade, como lista CSV de pares KV.
+     * <<Transient>> Lists of items required to traceability, like list CVS of pair KV.
      */
     public String[] getScriptItemsAsArray() {
 		return StringListUtils.stringToArray(getScriptItems());
 	}
     
     /**
-     * <<Transient>> Lista de com o conteúdo dos scripts (carregados durante a execução).
+     * <<Transient>> List of scripts contexts. 
      */
     public List<String> getScriptList() {
     	return transientScriptContents;
     }
     
-    /**
-     * Adiciona conteúdo de um script é lista.
+    /** 
+     * Add context of a script to a list.
      * 
      * @param scriptContent
      */
@@ -735,7 +734,8 @@ public class ReportFolder
 	}
     
     /**
-     * <<Transient>> Padréo de referéncia para seleção de parceiros como lista uma CSV de pares KV convertido em matriz.
+     * <<Transient>> 
+     * Reference default to partner selection as a list CSV with pairs KV converted in matrix.
      */
     public static String[] getStandardPartnerTypeFilterPatternAsArray() {
     	// CLiente, fornecedor,filial,representante,laboratério,fabricante,produtor,transportadora,ensino
@@ -743,14 +743,14 @@ public class ReportFolder
 	}
 
     /**
-     * <<Transient>> Verdadeiro se hé um padréo para seleção de parceiros determinado pela categoria.
+     * <<Transient>> True if have a partner selection default, determined by category. 
      */
     public boolean isPartnerRequired() {
     	return isCategoryEnabled() && getCategory().getPartnerFilterPatternAsArray().length >0;
     }
     
     /**
-     * <<Transient>> Lista de padrées para seleção de categorias convertida para uma matriz.
+     * <<Transient>> Default list to selection of category converted to a matrix. 
      */
     public String[] getPartnerFilterPatternAsArray() {
     	if (isPartnerRequired()) {
@@ -760,7 +760,7 @@ public class ReportFolder
 	}
     
     /**
-     * Conjunto de participantes.
+     * Set of participants.
      */
     public Set<StaffMember> getStaff() {
 		return staff;
@@ -770,7 +770,7 @@ public class ReportFolder
 	}
     
     /**
-     * Conjunto de fases.
+     * Set of phases.
      */
     public Set<ReportPhase> getPhases() {
 		return phases;
@@ -780,7 +780,7 @@ public class ReportFolder
 	}
     
     /**
-     * <<Transient>> Lista de responsabilidades convertida em matriz.
+     * <<Transient>> List of responsibilities converted in matrix.
      */
     public String[] getCustomWorkflowRolesAsArray() {
     	if (isCategoryEnabled()) {
@@ -790,11 +790,11 @@ public class ReportFolder
 	}
 
     /**
-     * <<Transient>> Lista de responsabilidades convertida em mapa onde a chave é 
-     * a ordem de apresentação.
-     * 
+     * <<Transient>> List of responsibilities converted in a map where the key
+     * is the order of presentation.  
+     *   
      * <p>
-     * As chaves do mapa tem base 1, i.e., a primeira responsabilidade é marcada como 1.
+     * Keys to map have base 1, i.e., the first responsibility is mark as 1.
      * </p>
      */
     public Map<String, String> getCustomWorkflowRolesAsMap() {
@@ -806,7 +806,7 @@ public class ReportFolder
 	}
 
 	/**
-	 * Aceita até 6 tags de volume, no formato CSV.
+	 * Accepts until 6 tags of volume, int the form CSV.
 	 */
     public String getVolumeTags() {
 		return volumeTags;
@@ -816,7 +816,7 @@ public class ReportFolder
 	}
 	
 	/**
-	 * <<Transient>> Conveniente para converter tags de volume em matriz.
+	 * <<Transient>> Convenient to convert tags of volume to a matrix. 
 	 */
 	public String[] getVolumeTagsAsArray() {
 		return StringListUtils.stringToArray(getVolumeTags());
@@ -826,7 +826,7 @@ public class ReportFolder
 	}
 	
 	/**
-	 * <<Transient>> Verdadeiro caso haja tags de volume.
+	 * <<Transient>> True if have tags of volume.
 	 */
 	public boolean isVolumeTagEnabled() {
 		return getVolumeTags()!=null && getVolumeTags().length()>0;

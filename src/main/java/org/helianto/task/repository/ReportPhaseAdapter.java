@@ -5,7 +5,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.helianto.task.domain.ReportPhase;
 
 /**
- * Adaptador para fases.
+ * Adapter to phases.
  * 
  * @author Eldevan Nery Junior
  */

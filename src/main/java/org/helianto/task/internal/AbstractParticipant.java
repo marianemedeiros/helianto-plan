@@ -136,14 +136,14 @@ public class AbstractParticipant
 	}
     
     /**
-     * <<Transient>> Permite que as subclasses modifiquem a forma pela qual a identidade é obtida.
+     * <<Transient>> Allow subclass modify the form of the identity is obtained. 
      */
     protected Identity getInternalIdentity() {
     	return this.identity;
     }
     
     /**
-     * Conveniente para recuperar o apelido do participante.
+     * Recovery the nickname of participant.
      */
     public String getParticipantAlias() {
     	if (getIdentity()!=null) {
@@ -153,7 +153,7 @@ public class AbstractParticipant
     }
 
     /**
-     * Conveniente para recuperar o nome do participante.
+     * Recovery the name of participant.
      */
     public String getParticipantName() {
     	if (getIdentity()!=null) {
@@ -215,7 +215,8 @@ public class AbstractParticipant
     }
 
     /**
-     * <<Transient>> Permite que as subclasses modifiquem a forma pela qual o tipo de atribuição é obtido.
+     * <<Transient>> 
+     * Allow sublcass change the way of type of attribution is obtained.
      */
     protected char getInternalAssignmentType() {
     	return this.assignmentType;
@@ -232,14 +233,14 @@ public class AbstractParticipant
     }
     
     /**
-     * <<Transient>> Permite que as subclasses modifiquem a forma pela qual a data de atribuição é obtida.
+     * <<Transient>> Allow subclass change de way of attribution data is obtained. 
      */
     protected Date getInternalJoinDate() {
     	return this.joinDate;
     }
     
     /**
-     * Nível de workflow do participante.
+     * Workflow level of participant.
      */
     public int getWorkflowLevel() {
 		return getInternalWorkflowLevel();
@@ -249,21 +250,21 @@ public class AbstractParticipant
 	}
     
     /**
-     * <<Transient>> Permite que as subclasses modifiquem a forma pela qual o nível de workflow é obtido.
+     * <<Transient>> Allow subclass change the way of workflow is obtained. 
      */
     protected int getInternalWorkflowLevel() {
     	return this.workflowLevel;
     }
     
     /**
-     * <<Transient>> Determina se um indivéduo participa do workflow.
+     * <<Transient>> Determine if an individual participates of workflow.
      */
     public boolean isWithinWorkflow() {
     	return getWorkflowLevel() >0;
     }
 
     /**
-     * Comparador de participantes.
+     * Compare of participants.
      */
     public int compareTo(AbstractParticipant next) {
     	if (getIdentity()!=null && next.getIdentity()!=null) {

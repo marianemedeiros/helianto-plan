@@ -4,7 +4,7 @@ import org.helianto.core.domain.Category;
 import org.helianto.core.repository.ItemCounter;
 
 /**
- * Contador para atrasos por categoria.
+ * Count latest by category.
  * 
  * @author mauriciofernandesdecastro
  */
@@ -15,14 +15,14 @@ public class ReportCategoryCounter
 	private static final long serialVersionUID = 1L;
 	
 	/**
-	 * Construtor.
+	 * Constructor.
 	 */
 	public ReportCategoryCounter() {
 		super();
 	}
 	
 	/**
-	 * Construtor.
+	 * Constructor.
 	 * 
 	 * @param category
 	 * @param reportCount

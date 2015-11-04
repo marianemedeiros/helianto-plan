@@ -19,7 +19,7 @@ import org.helianto.core.internal.Extensible;
 import org.springframework.format.annotation.DateTimeFormat;
 
 /**
- * Relatórios de teste.
+ * Tests report.
  * 
  * @author Mauricio Fernandes de Castro
  */
@@ -82,7 +82,7 @@ public class TestReport
     
     
     /**
-     * Construtor.
+     * Constructor.
      */
     public TestReport() {
 		super();
@@ -90,7 +90,7 @@ public class TestReport
 	}
 
     /**
-     * Construtor chave.
+     * Constructor key.
      * 
      * @param testCase
      * @param reportCode
@@ -122,7 +122,7 @@ public class TestReport
     }
     
     /**
-     * Grupo de teste.
+     * Group of test.
      * 
      * @see {@link TestGroup}
      */
@@ -134,7 +134,7 @@ public class TestReport
 	}
 
 	/**
-	 * Código.
+	 * Code.
 	 */
 	public String getReportCode() {
 		return reportCode;
@@ -144,7 +144,7 @@ public class TestReport
 	}
 	
 	/**
-	 * Pasta raéz.
+	 * Root folder.
 	 */
 	public String getRootFolder() {
 		return rootFolder;
@@ -154,7 +154,7 @@ public class TestReport
 	}
 
 	/**
-	 * Relator.
+	 * Reporter.
 	 */
 	public Identity getReporter() {
 		return reporter;
@@ -164,7 +164,7 @@ public class TestReport
 	}
 
     /**
-     * Data de emisséo.
+     * Issue date.
      */
 	public Date getIssueDate() {
 		return issueDate;
@@ -174,7 +174,7 @@ public class TestReport
 	}
 
 	/**
-	 * Resolução.
+	 * Resolution.
 	 */
 	public char getResolution() {
 		return resolution;
@@ -184,7 +184,7 @@ public class TestReport
 	}
 
 	/**
-	 * Conteúdo analisado.
+	 * Parsed Content.
 	 */
 	public String getParsedContent() {
 		return parsedContent;
@@ -194,7 +194,7 @@ public class TestReport
 	}
 
 	/**
-	 * Comentério.
+	 * Comment.
 	 */
 	public String getReportComment() {
 		return reportComment;

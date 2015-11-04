@@ -40,7 +40,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 
 /**
- * Associa fases de projeto a pastas.
+ * Associate projects phases to folders.
  * 
  * @author Mauricio Fernandes de Castro
  */
@@ -155,7 +155,7 @@ public class ReportPhase
 	}
     
     /**
-     * Conveniente para recuperar o código da pasta.
+     * Recovery folder code.
      */
 //    @Transient
     public String getBuilderCode() {
@@ -166,7 +166,7 @@ public class ReportPhase
     }
 
     /**
-     * Conveniente para recuperar o nome da pasta.
+     * Recovery folder name.
      */
 //    @Transient
     public String getBuilderName() {
@@ -177,7 +177,7 @@ public class ReportPhase
     }
 
     /**
-     * Letra que representa o requisito.
+     * Letter that represents a requirement.
      */
     public char getLiteral() {
 		return literal;
@@ -240,7 +240,7 @@ public class ReportPhase
      * True if {@link #afterInternalNumberSet(long)} starts with "text".
      */
     /**
-     * Estimativa (HH).
+     * Estimate (HH).
      */
     public int getEstimate() {
 		return estimate;
@@ -250,7 +250,7 @@ public class ReportPhase
 	}
     
     /**
-     * Data programada para inécio.
+     * Scheduled Start Date.
      */
     public Date getScheduledStartDate() {
         return this.scheduledStartDate;
@@ -260,7 +260,7 @@ public class ReportPhase
     }
     
     /**
-     * Data programada para fim.
+     * Scheduled End Date.
      */
     public Date getScheduledEndDate() {
         return this.scheduledEndDate;

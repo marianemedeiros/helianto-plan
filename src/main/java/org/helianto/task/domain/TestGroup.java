@@ -20,7 +20,7 @@ import org.helianto.core.domain.Operator;
 import org.springframework.format.annotation.DateTimeFormat;
 
 /**
- * Grupos de teste.
+ * Tests report.
  * 
  * @author Mauricio Fernandes de Castro
  */
@@ -75,7 +75,7 @@ public class TestGroup
    		}
     
     /**
-     * Construtor.
+     * Constructor.
      */
     public TestGroup() {
 		super();
@@ -83,7 +83,7 @@ public class TestGroup
 	}
 
     /**
-     * Construtor chave.
+     * Constructor key.
      * 
      * @param operator
      * @param caseCode
@@ -115,7 +115,7 @@ public class TestGroup
     }
     
     /**
-     * Operador.
+     * Operator.
      * 
      * @see {@link Operator}
      */
@@ -127,7 +127,7 @@ public class TestGroup
 	}
 
 	/**
-	 * Código.
+	 * Code.
 	 */
 	public String getTestCode() {
 		return testCode;
@@ -137,7 +137,7 @@ public class TestGroup
 	}
 
 	/**
-	 * Proprietário.
+	 * Oowner.
 	 */
 	public Identity getOwner() {
 		return owner;
@@ -147,7 +147,7 @@ public class TestGroup
 	}
 
     /**
-     * Data de emisséo.
+     * Issue Date.
      */
 	public Date getIssueDate() {
 		return issueDate;
@@ -157,7 +157,7 @@ public class TestGroup
 	}
 
 	/**
-	 * Resolução.
+	 * Resolution.
 	 */
 	public char getResolution() {
 		return resolution;
@@ -167,7 +167,7 @@ public class TestGroup
 	}
 
 	/**
-	 * Comentério.
+	 * Comment.
 	 */
 	public String getReportComment() {
 		return reportComment;

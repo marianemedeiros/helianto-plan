@@ -80,7 +80,6 @@ public class UserRequirement
    			return this;
    		}
     
-    /* Métodos da interface Sequenceable */
     
 //    @Transient
     public String getInternalNumberKey() {
@@ -135,7 +134,7 @@ public class UserRequirement
 	}
     
     /**
-     * Usuário associado (pode ser null).
+     * Associated user (can be null).
      */
     public User getUser() {
 		return user;
@@ -153,7 +152,7 @@ public class UserRequirement
     }
     
     /**
-     * Chave (email) opcional.
+     * Key (email) optional.
      */
     public String getOptionalKey() {
 		return internalOptionalKey(optionalKey);
@@ -163,11 +162,11 @@ public class UserRequirement
 	}
     
     /**
-     * <<Transient>> Permite que as subclasses substituam o chave opcional 
-     * de acordo com as condições desta requisição.
+     * <<Transient>> Allow that the subclass replace an optional code according
+     * to conditions of request. 
      * 
      * <p>
-     * Implementação padréo usa a chave do usuário, quando ela existir.
+     * Default implementation use user code.
      * </p>
      */
 //    @Transient
@@ -179,7 +178,7 @@ public class UserRequirement
 	}
     
     /**
-     * Nome comum opcional.
+     * Common name optional.
      * @deprecated
      */
 //    @Transient
@@ -191,7 +190,7 @@ public class UserRequirement
 	}
     
     /**
-     * Nome a exibir.
+     * Name to display.
      */
     public String getDisplayName() {
     	return internalDisplayName(displayName);
@@ -201,11 +200,11 @@ public class UserRequirement
 	}
     
     /**
-     * <<Transient>> Permite que as subclasses substituam o chave opcional 
-     * de acordo com as condições desta requisição.
+     * <<Transient>> Allow that the subclass replace the optional key according the conditions 
+     * of request.  
      * 
      * <p>
-     * Implementação padréo usa a chave do usuário, quando ela existir.
+     * Default implementation use user key.
      * </p>
      */
 //    @Transient
@@ -217,7 +216,7 @@ public class UserRequirement
 	}
     
     /**
-     * Primeiro nome opcional.
+     * First Name Optional.
      */
     public String getOptionalFirstName() {
 		return internalOptionalFirstName(optionalFirstName);
@@ -227,11 +226,11 @@ public class UserRequirement
 	}
     
     /**
-     * <<Transient>> Permite que as subclasses substituam o primeiro nome verdadeiro 
-     * de acordo com as condições desta requisição.
+     * <<Transient>> Allow that the subclass replace the first name according the conditions 
+     * of request.  
      * 
      * <p>
-     * Implementação padréo usa o primeiro nome do usuário, quando ele existir.
+     * Default implementation use first name.
      * </p>
      */
 //    @Transient
@@ -243,7 +242,7 @@ public class UserRequirement
 	}
     
     /**
-     * éltimo nome opcional.
+     * Last name optional.
      */
     public String getOptionalLastName() {
 		return internalOptionalLastName(optionalLastName);
@@ -253,11 +252,11 @@ public class UserRequirement
 	}
     
     /**
-     * <<Transient>> Permite que as subclasses substituam o éltimo nome verdadeiro 
-     * de acordo com as condições desta requisição.
+     * <<Transient>> Allow that the subclass replace the last name according the conditions 
+     * of request.  
      * 
      * <p>
-     * Implementação padréo usa o éltimo nome do usuário, quando ele existir.
+     * Default implementation use last name.
      * </p>
      */
 //    @Transient
@@ -269,7 +268,7 @@ public class UserRequirement
 	}
     
     /**
-     * Género opcional.
+     * Gender Optional.
      */
     public char getOptionalGender() {
 		return internalOptionalGender(optionalGender);
@@ -279,11 +278,11 @@ public class UserRequirement
 	}   
     
     /**
-     * <<Transient>> Permite que as subclasses substituam o género verdadeiro 
-     * de acordo com as condições desta requisição.
+     * <<Transient>> Allow that the subclass replace the true gender according the conditions 
+     * of request.  
      * 
      * <p>
-     * Implementação padréo usa o género do usuário, quando ele existir.
+     * Default implementation use user gender.
      * </p>
      */
 //    @Transient
@@ -295,7 +294,7 @@ public class UserRequirement
 	}
     
     /**
-     * Tratamento opcional.
+     * Treatment optional.
      */
     public char getOptionalAppellation() {
 		return internalOptionalAppellation(optionalAppellation);
@@ -305,11 +304,11 @@ public class UserRequirement
 	}
     
     /**
-     * <<Transient>> Permite que as subclasses substituam o tratamento verdadeiro 
-     * de acordo com as condições desta requisição.
+     * <<Transient>> Allow that the subclass replace the true treatment according the conditions 
+     * of request.  
      * 
      * <p>
-     * Implementação padréo usa o tratamento do usuário, quando ele existir.
+     * Default implementation use user treatment.
      * </p>
      */
 //    @Transient
@@ -321,7 +320,7 @@ public class UserRequirement
 	}
     
     /**
-     * Data de nascimento opcional.
+     * Birth data optional.
      */
     public Date getOptionalBirthDate() {
 		return internalOptionalBirthDate(optionalBirthDate);
@@ -331,11 +330,11 @@ public class UserRequirement
 	}
     
     /**
-     * <<Transient>> Permite que as subclasses substituam a data de nascimento verdadeira 
-     * de acordo com as condições desta requisição.
+     * <<Transient>> Allow that the subclass replace the birth date according the conditions 
+     * of request.  
      * 
      * <p>
-     * Implementação padréo usa a data de nascimento do usuário, quando ele existir.
+     * Default implementation use user birth date.
      * </p>
      */
 //    @Transient
@@ -395,7 +394,7 @@ public class UserRequirement
     }
     
     /**
-     * Comparador de solicitações.
+     * Requests comparator.
      */
     public int compareTo(UserRequirement next) {
     	if (getReport()!=null && next.getReport()!=null) {

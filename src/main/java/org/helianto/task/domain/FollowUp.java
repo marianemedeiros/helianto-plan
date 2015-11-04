@@ -37,7 +37,7 @@ import org.helianto.task.def.ReviewDecision;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
 /**
- * Acompanhamento para um relatório.
+ * 	Accompaniment to a report.
  * 
  * @author Mauricio Fernandes de Castro
  */
@@ -57,7 +57,7 @@ public class FollowUp
 	  Sequenceable {
 	
 	/**
-	 * Expõe o discriminador.
+	 * Expose discriminator.
 	 */
 //	@Transient
 	public char getDiscriminatorValue() {
@@ -166,7 +166,7 @@ public class FollowUp
     }
 
 	/**
-	 * Verdadeiro se a avaliação pode ser aceita.
+	 * True if evaluation can be accept.
 	 */
 //	@Transient
 	public boolean isValid() {
@@ -193,7 +193,7 @@ public class FollowUp
 	}
 
     /**
-     * Plano de origem, delegação.
+     * Origin plan.
      */
 //    @Transient
     public Report getTask() {
@@ -204,7 +204,7 @@ public class FollowUp
     }
 
     /**
-     * Plano de origem.
+     * Origin plan.
      */
     
     public Report getReport() {
@@ -220,7 +220,7 @@ public class FollowUp
     }
     
     /**
-     * Duração (em minutos).
+     * Duration (minutes).
      */
     public int getDuration() {
     	return duration;
@@ -230,7 +230,7 @@ public class FollowUp
     }   
 
     /**
-     * Ação decorrente do acompanhamento.
+     * Action follow up action.
      */
     public char getFollowUpAction() {
 		return followUpAction;

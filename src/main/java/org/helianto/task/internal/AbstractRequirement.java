@@ -86,8 +86,6 @@ public abstract class AbstractRequirement
     	return null;
     }
     
-    /* Métodos da prépria classe */
-    
     /**
      * Default constructor.
      */
@@ -119,7 +117,7 @@ public abstract class AbstractRequirement
 	}
     
     /**
-     * Relatório que acompanha o desenvolvimento.
+     * Report that monitors the development.
      */
     public Report getReport() {
 		return report;
@@ -129,7 +127,7 @@ public abstract class AbstractRequirement
 	}
     
     /**
-     * Sequência.
+     * Sequence.
      */
     public int getSequence() {
 		return sequence;
@@ -139,7 +137,7 @@ public abstract class AbstractRequirement
 	}
     
     /**
-     * Observação.
+     * Remark.
      */
     public String getRemark() {
 		return remark;
@@ -149,7 +147,7 @@ public abstract class AbstractRequirement
 	}
     
     /**
-     * Conteúdo analisado.
+     * Parsed content.
      */
     public String getParsedContent() {
 		return parsedContent;

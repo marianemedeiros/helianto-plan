@@ -30,9 +30,8 @@ import org.helianto.document.domain.ProcessDocument;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
 /**
- * Referencia dados de processo ainda que não 
- * se possa associá-los diretamente.
- * 
+ * Data partner or process not yet can be associated directly.
+ *
  * @author Mauricio Fernandes de Castro
  */
 @Embeddable
@@ -61,26 +60,26 @@ public class ProcessReference
    		}
 
     /**
-     * Contrutor padrão.
+     * Default constructor.
      */
     public ProcessReference() {
     }
     
     /**
-     * Contrutor de processo.
+     * Constructor of process.
      */
     public ProcessReference(ProcessDocument processDocument) {
     	setProcessDocument(processDocument);
     }
     
     /**
-     * Processo referenciado.
+     * Process referenced.
      */
 	public ProcessDocument getProcessDocument() {
 		return processDocument;
 	}
 	/**
-	 * <<Transient>> Verdadeiro se o processo referenciado é nulo.
+	 * <<Transient>> True if process referenced is null.
 	 */
 	@Transient
 	public boolean isProcessDocumentNotNull() {
@@ -91,10 +90,8 @@ public class ProcessReference
 	}
 	
     /**
-     * Código do processo referenciado, ou incluédo no processo referenciado,
-     * caso exista.
+     * Code process referenced, or included in referenced process.
      */
-  
 	public String getProcessCode() {
     	if (isProcessDocumentNotNull()) {
     		return getProcessDocument().getDocCode();

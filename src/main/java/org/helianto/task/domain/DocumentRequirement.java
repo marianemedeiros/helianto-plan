@@ -11,7 +11,7 @@ import org.helianto.document.domain.Document;
 import org.helianto.task.internal.AbstractRequirement;
 
 /**
- * Requisito de documentação associado a um relatório.
+ * Documentation requirements associated to a report.
  * 
  * @author Mauricio Fernandes de Castro
  */
@@ -51,7 +51,6 @@ public class DocumentRequirement
    			return this;
    		}
     
-    /* Métodos da interface Sequenceable */
     
 //    @Transient
     public String getInternalNumberKey() {
@@ -117,7 +116,7 @@ public class DocumentRequirement
 	}
         
     /**
-     * Documento associado (pode ser null).
+     * Associated Document. (can be null).
      */
     public Document getDocument() {
 		return document;
@@ -127,7 +126,8 @@ public class DocumentRequirement
 	}
     
     /**
-     * <<Transient>> Verdadeiro se hé um documento anexo é requisição.
+     * <<Transient>> True if have attached document to the request.
+     * 
      */
 //    @Transient
     public boolean isDocumentEnabled() {
@@ -135,7 +135,7 @@ public class DocumentRequirement
     }
     
     /**
-     * Código opcional.
+     * Optional code.
      */
     public String getOptionalCode() {
 		return internalOptionalCode();
@@ -145,11 +145,11 @@ public class DocumentRequirement
 	}
     
     /**
-     * <<Transient>> Permite que as subclasses substituam o código opcional 
-     * de acordo com as condições desta requisição.
+     * <<Transient>> Allow that the subclass replace an optional code according
+     * to conditions of request. 
      * 
      * <p>
-     * Implementação padréo usa o código do documento, quando ele existir.
+     * Default implementation use document code.
      * </p>
      */
 //    @Transient
@@ -161,7 +161,7 @@ public class DocumentRequirement
 	}
     
     /**
-     * Nome opcional.
+     * Optional name.
      */
     public String getOptionalName() {
 		return optionalName;
@@ -171,7 +171,7 @@ public class DocumentRequirement
 	}
     
     /**
-     * Nome verdadeiro.
+     * True name.
      */
     public String getActualName() {
 		return internalActualName();
@@ -181,11 +181,11 @@ public class DocumentRequirement
 	}
     
     /**
-     * <<Transient>> Permite que as subclasses substituam o nome verdadeiro 
-     * de acordo com as condições desta requisição.
+     * <<Transient>> Allow that the subclass replace the true name according the conditions 
+     * of request.  
      * 
      * <p>
-     * Implementação padréo usa o nome do documento, quando ele existir.
+     * Default implementation use document name.
      * </p>
      */
 //    @Transient
@@ -198,7 +198,7 @@ public class DocumentRequirement
     
     
     /**
-     * Comparador de solicitações.
+     * Comparator of requests.
      */
     public int compareTo(DocumentRequirement next) {
     	if (getReport()!=null && next.getReport()!=null) {

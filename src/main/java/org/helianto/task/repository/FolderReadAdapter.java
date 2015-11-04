@@ -7,7 +7,7 @@ import java.util.Date;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 /**
- * Adaptador para pastas.
+ * Adaptor to folders.
  * 
  * @author mauriciofernandesdecastro
  */
@@ -47,7 +47,7 @@ public class FolderReadAdapter
 	}
 
 	/**
-	 * Construtor.
+	 * Constructor.
 	 * 
 	 * @param id
 	 * @param categoryId
@@ -67,7 +67,7 @@ public class FolderReadAdapter
 	}
 
 	/**
-	 * Construtor.
+	 * Constructor.
 	 * 
 	 * @param id
 	 * @param categoryId
@@ -92,7 +92,7 @@ public class FolderReadAdapter
 	}
 
 	/**
-	 * Construtor.
+	 * Constructor.
 	 * 
 	 * @param id
 	 * @param categoryId
@@ -115,7 +115,7 @@ public class FolderReadAdapter
 	}
 
 	/**
-	 * Construtor sem contentType
+	 * Constructor without contentType
 	 * 
 	 * @param id
 	 * @param categoryId
@@ -137,7 +137,7 @@ public class FolderReadAdapter
 	}
 	
 	/**
-	 * Construtor exported
+	 * Constructor exported
 	 * 
 	 * @param id
 	 * @param categoryId
@@ -193,7 +193,7 @@ public class FolderReadAdapter
 	}
 	
 	/**
-	 * Para customizar sufixo.
+	 * Customize suffix.
 	 * 
 	 * @param numberSuffix
 	 */
@@ -205,7 +205,7 @@ public class FolderReadAdapter
 	}
 	
 	/**
-	 * Para customizar sufixo.
+	 * To customize suffix.
 	 * 
 	 * @param numberSuffix
 	 * @param referenceDate
@@ -224,7 +224,7 @@ public class FolderReadAdapter
 	}
 	
 	/**
-	 * Data de referência usada no sufixo (ou prefixo)
+	 * Reference date used by suffix.
 	 * @return
 	 */
 	public Date getReferenceDate() {
@@ -235,7 +235,7 @@ public class FolderReadAdapter
 	}
 
 	/**
-	 * Cria 'numberPattern'.
+	 * Create 'numberPattern'.
 	 */
 	@JsonIgnore
 	public String getNumberPattern() {

@@ -5,7 +5,7 @@ import javax.persistence.MappedSuperclass;
 
 
 /**
- * Classe base para conteúdo que pode ter o código personalizado.
+ * Context base class that can have custom code.
  * 
  * @author mauriciofernandesdecastro
  */
@@ -35,8 +35,8 @@ public class AbstractCustomizableContent
 		}
 	
     /**
-     * Permite o controle de chave secundária com um prefixo diferente do
-     * usado como nome da pasta.
+     * Allow secondary key control with a different prefix of the used as folder name.
+     * 
      */
     public String getCustomPrefix() {
 		return customPrefix;
@@ -46,7 +46,7 @@ public class AbstractCustomizableContent
 	}
     
     /** 
-     * Verdadeiro se a chave deve ser gerada com um prefixo personalizado.
+     * True if key can be generated with a personalized prefix.     
      */
     public boolean isCustomPrefixValid() {
 		if (getCustomPrefix()!=null && getCustomPrefix().length()>0) {
@@ -56,7 +56,8 @@ public class AbstractCustomizableContent
 	}
     
 	/**
-	 * Sufixo (opcional) usado para cria docCode.
+	 * Suffix (optional) used to create docCode.
+	 * 
 	 */
 	public String getSuffix() {
 		return suffix;
@@ -65,8 +66,9 @@ public class AbstractCustomizableContent
 		this.suffix = suffix;
 	}
 
-    /** 
-     * Verdadeiro se a chave deve ser gerada com um sufixo personalizado.
+    /**
+     * True if key can be generated with a personalized prefix. 
+     * 
      */
     public boolean isSuffixValid() {
 		if (getSuffix()!=null && getSuffix().length()>0) {
@@ -76,7 +78,8 @@ public class AbstractCustomizableContent
 	}
     
 	/**
-	 * Usa o prefixo personalizado, caso haja, para construir docCode.
+	 * Use personalized prefix, if have to build docCode.
+	 * 
 	 */
 	public String getNumberPattern() {
 		if (isCustomPrefixValid()) {

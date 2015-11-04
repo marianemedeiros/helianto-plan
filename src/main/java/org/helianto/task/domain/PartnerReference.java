@@ -25,8 +25,7 @@ import javax.persistence.Transient;
 import org.helianto.partner.domain.Partner;
 
 /**
- * Referencia dados de parceiro ou processo ainda que não 
- * se possa associá-los diretamente.
+ * Data partner or process not yet can be associated directly.
  * 
  * @author Mauricio Fernandes de Castro
  */
@@ -59,27 +58,27 @@ public class PartnerReference implements Serializable {
    		}
 
     /**
-     * Contrutor padréo.
+     * Default constructor.
      */
     public PartnerReference() {
     }
     
     /**
-     * Contrutor do parceiro.
+     * Constructor of partner.
      */
     public PartnerReference(Partner partner) {
     	setPartner(partner);
     }
     
     /**
-     * <<Transient>> Parceiro referenciado.
+     * <<Transient>> Partner referenced.
      */
 //    @Transient
 	public Partner getPartner() {
 		return partner;
 	}
 	/**
-	 * <<Transient>> Verdadeiro se o parceiro referenciado é nulo.
+	 * <<Transient>> True if partner referenced is null.
 	 */
 	@Transient
 	public boolean isPartnerNotNull() {
@@ -90,8 +89,8 @@ public class PartnerReference implements Serializable {
 	}
 	
     /**
-     * Nome do parceiro referenciado, ou incluédo no parceiro referenciado,
-     * caso exista. 
+     * Name of partner referenced, or included in partner referenced.
+     * 
      */
 	public String getPartnerAlias() {
     	if (isPartnerNotNull()) {
@@ -100,7 +99,7 @@ public class PartnerReference implements Serializable {
 		return partnerAlias;
 	}
 	/**
-	 * <<Transient>> Verdadeiro se o nome do parceiro referenciado exista.
+	 * <<Transient>> True if partner referenced name exists. 
 	 */
 	@Transient
 	public boolean isPartnerAliasEmpty() {
@@ -111,7 +110,7 @@ public class PartnerReference implements Serializable {
 	}
 
     /**
-	 * Nome do contato.
+	 * Contact Name.
 	 */
 	public String getContactName() {
 		return contactName;
@@ -121,7 +120,7 @@ public class PartnerReference implements Serializable {
 	}
 
 	/**
-	 * Telefone do contato.
+	 * Contact Phone.
 	 */
 	public String getContactPhone() {
 		return contactPhone;

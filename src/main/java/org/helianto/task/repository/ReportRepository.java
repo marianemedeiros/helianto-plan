@@ -132,9 +132,9 @@ public interface ReportRepository
 			"where report.entity = ?1 ")
 	long count(Entity entity);
 
-	// TODO confirmar e retirar countByCategory
+	// TODO confirm and remove countByCategory
 	//
-	// Atualmente usa reportStatsRepository
+	// Use reportStatsRepository
 	//
 	
 	/**
@@ -149,9 +149,9 @@ public interface ReportRepository
 			"group by report.series.category")
 	List<ReportCategoryCounter> countByCategory(Entity entity);
 
-	// TODO confirmar e retirar countLateByCategory
+	// TODO confirm and remove countLateByCategory
 	//
-	// Atualmente usa reportStatsRepository
+	// Use reportStatsRepository
 	//
 	
 	/**

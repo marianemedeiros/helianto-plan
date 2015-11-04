@@ -10,7 +10,7 @@ import org.helianto.core.internal.InterpretableCategory;
 import org.helianto.document.internal.AbstractContent;
 
 /**
- * Classe base para conteúdo que pode ser interpretado.
+ * Context base class that can be interpreted.
  * 
  * @author mauriciofernandesdecastro
  */
@@ -28,26 +28,25 @@ public abstract class AbstractInterpretableContent
     private String securedContent;
 
 	/**
-	 * <<Transient>> Verdadeiro se há uma pasta com uma categoria associada a ela.
+	 * <<Transient>> True if have a folder with category associate with it. 
 	 */
 	public boolean isFolderCategoryEnabled() {
 		return getFolder()!=null && getFolder().isCategoryEnabled();
 	}
 	
 	/**
-	 * <<Transient>> Verdadeiro quando é permitido substituir a categoria da pasta
-	 * por uma categoria diretamente no conteúdo.
+	 * <<Transient>> True if can substitute a folder category by a category directly in context.
 	 */
 	public boolean isCategoryOverrideAllowed() {
 		return false;
 	}
 	
 	/**
-	 * <<Transient>> Permite que as subclasses atualizem a categoria em função do estado do relatório.
+	 * <<Transient>> Allow that subclass update category in function of report state.
 	 * 
 	 * <p>
-	 * Implementação padréo verifica se é possível substituir a categoria, caso não seja, herda a 
-	 * categoria da pasta, quando houver.
+	 * Default implementation verify if it's possible substitute a category, if true, inherits
+	 * folder category.
 	 * </p>
 	 */
 	protected Category getInternalCategory(Category category) {
@@ -73,7 +72,7 @@ public abstract class AbstractInterpretableContent
 			}
 	
     /**
-     * Conteúdo transformado.
+     * Transformed context.
      */
     public String getParsedContent() {
 		return parsedContent;
@@ -83,7 +82,7 @@ public abstract class AbstractInterpretableContent
 	}
     
     /**
-     * Conteúdo seguro.
+     * Security context.
      */
     public String getSecuredContent() {
 		return securedContent;
@@ -93,18 +92,19 @@ public abstract class AbstractInterpretableContent
 	}
     
 	/**
-	 * <<Transient>> Verdadeiro quando há uma categoria disponível.
+	 * <<Transient>> True when have available category.
 	 */
 	protected boolean isCategoryEnabled() {
 		return getCategory()!=null && getCategory().getScriptItemsAsArray().length>0;
 	}
 	
     /**
-     * Lista de scripts, como lista CSV dos códigos dos scripts.
+     * List of scripts.
      * 
      * <p>
-     * Os scripts são extraídos preferencialmente da categoria. Somente se não houver resultado
-     * a pasta é então usada para extrair scripts.
+     * Scripts are extracted in most cases from category. Just when haven't result the folder
+     * is used to extracted scripts.
+     * 
      * </p>
      */
     public String getScriptItems() {

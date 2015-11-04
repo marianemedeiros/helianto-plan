@@ -83,7 +83,7 @@ public class AbstractReadAdapter
 	}
 	
 	/**
-	 * Atualiza contagem de ítens .
+	 * Update count of items.
 	 * 
 	 * @param counterList
 	 */
@@ -99,7 +99,7 @@ public class AbstractReadAdapter
 	}
 	
 	/**
-	 * Atualiza contagem de alertas .
+	 * Update count of alerts.
 	 * 
 	 * @param counterList
 	 */
@@ -115,7 +115,7 @@ public class AbstractReadAdapter
 	}
 	
 	/**
-	 * Atualiza contagem de avisos .
+	 * Update count of warnings.
 	 * 
 	 * @param counterList
 	 */
@@ -131,7 +131,7 @@ public class AbstractReadAdapter
 	}
 	
 	/**
-	 * Atualiza contagem de outros .
+	 * Update count of others.
 	 * 
 	 * @param counterList
 	 */

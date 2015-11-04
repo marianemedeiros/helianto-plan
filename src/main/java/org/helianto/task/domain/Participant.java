@@ -29,7 +29,7 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 
 
 /**
- * Participante de uma tarefa.
+ * Participant from a task.
  * 
  * @author Mauricio Fernandes de Castro
  */
@@ -92,7 +92,7 @@ public class Participant
     }
 
     /**
-     * Relatório ao qual os participantes pertencem.
+     * Report that participants belong.
      */
     public Report getReport() {
         return this.report;
@@ -102,7 +102,7 @@ public class Participant
     }
     
     /**
-     * Verdadeiro se o participante é o relator.
+     * True if participant is a reporter.
      */
 //    @Transient
     public boolean isReporter() {
@@ -113,7 +113,7 @@ public class Participant
     }
     
     /**
-     * Membro da equipe do qual o participante obtém suas propriedades.
+     * Staff member that a participant get your properties.
      */
     public StaffMember getStaffMember() {
 		return staffMember;
@@ -123,7 +123,8 @@ public class Participant
 	}
     
     /**
-     * <<Transient>> Verdadeiro se hé um membro da equipe do qual o participante obtém suas propriedades.
+     * <<Transient>> True if have a staff member that the participant get your properties. 
+     * 
      */
 //    @Transient
     public boolean isStaffMemberAvailable() {
@@ -131,8 +132,8 @@ public class Participant
 	}
     
     /**
-     * <<Transient>> Mantém a identidade do participante igual a do membro da
-     * equipe que o originou.
+     * <<Transient>> Keeps an participant identity equals of staff member that originated 
+     * 
      */
 //    @Transient
     protected Identity getInternalIdentity() {
@@ -143,8 +144,8 @@ public class Participant
     }
     
     /**
-     * <<Transient>> Mantém tipo de atribuição do participante igual a do membro da
-     * equipe que o originou.
+     * <<Transient>> Keep a type of participant attribution to a staff member it originated, 
+     * 
      */
 //    @Transient
     protected char getInternalAssignmentType() {
@@ -155,8 +156,8 @@ public class Participant
     }
     
     /**
-     * <<Transient>> Mantém a data de atribuição do participante igual a do membro da
-     * equipe que o originou.
+     * 
+     * <<Transient>> Keep attribute data to an equals participant the staff member it originated.
      */
 //    @Transient
     protected Date getInternalJoinDate() {
@@ -167,8 +168,8 @@ public class Participant
     }
     
     /**
-     * <<Transient>> Mantém o nível de workflow do participante igual a do membro da
-     * equipe que o originou.
+     * <<Transient>> Keep a level to participant workflow equals of a staff member it originated. 
+     * 
      */
 //    @Transient
     protected int getInternalWorkflowLevel() {

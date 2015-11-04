@@ -60,7 +60,7 @@ public class Volume
 	}
 	
 	/**
-	 * Código.
+	 * Code.
 	 */
 	public String getVolumeCode() {
 		return volumeCode;
@@ -70,7 +70,7 @@ public class Volume
 	}
 	
 	/**
-	 * Nome do volume.
+	 * Volume name.
 	 */
 	public String getVolumeName() {
 		return volumeName;

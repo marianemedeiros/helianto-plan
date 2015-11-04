@@ -5,7 +5,7 @@ import org.helianto.core.repository.ItemCounter;
 import org.helianto.task.domain.ReportFolder;
 
 /**
- * Contador para atrasos por pasta.
+ * Count latest by folder.
  * 
  * @author mauriciofernandesdecastro
  */
@@ -16,14 +16,14 @@ public class ReportFolderCounter
 	private static final long serialVersionUID = 1L;
 	
 	/**
-	 * Construtotr.
+	 * Constructor.
 	 */
 	public ReportFolderCounter() {
 		super();
 	}
 	
 	/**
-	 * Construtor.
+	 * Constructor.
 	 * 
 	 * @param reportFolder
 	 * @param instrumentCount

@@ -9,7 +9,7 @@ import org.helianto.task.domain.Report;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 /**
- * Adaptador para reports.
+ * Adaptor to reports.
  * 
  * @author Eldevan Nery Jr
  */
@@ -88,7 +88,7 @@ public class ReportAdapter extends AbstractItemAdapter
 	}
 
 	/**
-	 * Adaptee contructor.
+	 * Adaptee constructor.
 	 *
 	 * @param adaptee
 	 */
@@ -124,11 +124,7 @@ public class ReportAdapter extends AbstractItemAdapter
 		return this;
 	}
 	
-	/**
-	 *
-	 *
-	 * 
-	 */
+
 	public Report merge(){
 		adaptee.setId(getId());
 		adaptee.setInternalNumber(getInternalNumber());
@@ -259,7 +255,7 @@ public class ReportAdapter extends AbstractItemAdapter
 	}
 	
 	/**
-	 * used by reporter
+	 * Used by reporter
 	 * 
 	 */
 	public Integer getIdentityId() {
